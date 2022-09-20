@@ -1,32 +1,75 @@
-// Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
-import androidx.compose.material.MaterialTheme
 import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.material.Button
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.awt.ComposeWindow
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import java.awt.FileDialog
+import java.io.File
 
 @Composable
 @Preview
 fun App() {
-    var text by remember { mutableStateOf("Hello, World!") }
+    val text = remember { mutableStateOf("") }
+    val inputFilePath = remember { mutableStateOf("Path to input file") }
+    val outputFilePath = remember { mutableStateOf("Path to output file") }
 
     MaterialTheme {
-        Button(onClick = {
-            text = "Hello, Desktop!"
-        }) {
-            Text(text)
+        Row(modifier = Modifier.padding(10.dp)) {
+            Column(modifier = Modifier.padding(10.dp)) {
+                OutlinedTextField(
+                    label = { Text("Enter Radius of Nucleus") },
+                    value = text.value,
+                    onValueChange = { text.value = it },
+                    modifier = Modifier.padding(10.dp)
+                )
+            }
+
+            Divider(
+                modifier = Modifier.fillMaxHeight().width(2.dp)
+            )
+
+
+            Column(modifier = Modifier.padding(10.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                Row {
+                    Button(
+                        onClick = {
+                            val dialog = FileDialog(ComposeWindow(), "Open CSV", FileDialog.LOAD)
+                            dialog.isVisible = true
+                            inputFilePath.value = dialog.directory + dialog.file
+                        }
+                    ) {
+                        Text("Load CSV")
+                    }
+
+                    Text(inputFilePath.value, modifier = Modifier.padding(15.dp))
+                }
+
+                Row {
+                    Button(
+                        onClick = {
+                            val dialog = FileDialog(ComposeWindow(), "Save CSV", FileDialog.SAVE)
+                            dialog.isVisible = true
+                            outputFilePath.value = dialog.directory + dialog.file
+                        }
+                    ) {
+                        Text("Save CSV")
+                    }
+
+                    Text(outputFilePath.value, modifier = Modifier.padding(15.dp))
+                }
+            }
         }
     }
 }
 
 fun main() = application {
-    Window(onCloseRequest = ::exitApplication) {
+    Window(title="Breast Cancer Diagnosis", onCloseRequest = ::exitApplication) {
         App()
     }
 }
