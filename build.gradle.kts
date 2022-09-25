@@ -27,6 +27,7 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                implementation("com.fuzzylite:jfuzzylite:6.0.1")
             }
         }
         val jvmTest by getting

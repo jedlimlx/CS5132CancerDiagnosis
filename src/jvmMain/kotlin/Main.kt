@@ -28,12 +28,19 @@ fun App() {
                     onValueChange = { text.value = it },
                     modifier = Modifier.padding(10.dp)
                 )
+
+                Button(
+                    onClick = {
+                        println("placeholder :D")
+                    }
+                ) {
+                    Text("Diagnose")
+                }
             }
 
             Divider(
                 modifier = Modifier.fillMaxHeight().width(2.dp)
             )
-
 
             Column(modifier = Modifier.padding(10.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 Row {
@@ -63,13 +70,24 @@ fun App() {
 
                     Text(outputFilePath.value, modifier = Modifier.padding(15.dp))
                 }
+
+                Button(
+                    onClick = {
+                        println("placeholder :D")
+                    }
+                ) {
+                    Text("Diagnose")
+                }
             }
         }
     }
 }
 
-fun main() = application {
-    Window(title="Breast Cancer Diagnosis", onCloseRequest = ::exitApplication) {
-        App()
-    }
+fun main() {
+    Bcancer.main(Array(0) { "" })
+    // return application {
+    //    Window(title="Breast Cancer Diagnosis", onCloseRequest = ::exitApplication) {
+    //        App()
+    //    }
+    // }
 }
