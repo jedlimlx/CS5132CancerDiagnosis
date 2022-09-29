@@ -1,3 +1,5 @@
+import com.sun.security.jgss.GSSUtil;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
@@ -13,6 +15,13 @@ public class DataFrame {
     private final int attributeCount, sampleCount;
     private double targetEntropy;
 
+    public DataFrame(String[] labels, HashMap<String, Integer> labelToColumnHashMap, int attributeCount, int sampleCount){
+        this.data = new String[attributeCount][sampleCount];
+        this.labels = labels;
+        this.labelToColumnHashMap = labelToColumnHashMap;
+        this.attributeCount = attributeCount;
+        this.sampleCount = sampleCount;
+    }
     public DataFrame(String[][] data, String[] labels, HashMap<String, Integer> labelToColumnHashMap, int attributeCount, int sampleCount){
         this.data = data;
         this.labels = labels;
@@ -29,6 +38,7 @@ public class DataFrame {
         String[] stringVars = sc.nextLine().split(",");
         for(int i = 0; i < attributeCount; ++i){
             labels[i] = stringVars[i];
+            System.out.println(labels[i]);
             labelToColumnHashMap.put(labels[i], i);
         }
         for(int i = 0; i < sampleCount; ++i){
@@ -43,10 +53,10 @@ public class DataFrame {
             if(hashTable.containsKey(i))
                 hashTable.put(i, hashTable.get(i) + 1);
             else
-                hashTable.put(i, 0);
+                hashTable.put(i, 1);
         }
         for(Map.Entry<String, Integer> i: hashTable.entrySet()){
-            double prob = ((double) i.getValue())/sampleCount;
+            double prob = ((double) i.getValue())/((double) sampleCount);
             targetEntropy -= prob * Math.log(prob)/Math.log(2);
         }
 

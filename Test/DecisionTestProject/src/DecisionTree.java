@@ -11,15 +11,15 @@ public class DecisionTree {
             classHashTable.put(i, classHashTable.get(i) + 1);
         double informationGain = dataFrame.getTargetEntropy();
         for(Map.Entry<String, Integer> i: classHashTable.entrySet())
-            informationGain -= ((double) i.getValue())/dataFrame.getSampleCount() * calculateEntropy(dataFrame, i.getKey());
+            informationGain -= ((double) i.getValue())/dataFrame.getSampleCount() * calculateEntropy(dataFrame, label, i.getKey());
         return informationGain;
     }
-    public double calculateEntropy(DataFrame dataFrame, String label){
+    public double calculateEntropy(DataFrame dataFrame, String label, String attr){
         HashMap<String, Integer> hashTable = getEmptyHash(dataFrame.getTargetData());
         int dataColumn = dataFrame.getColumnFromLabel(label);
         int count = 0;
         for(int i = 0; i < dataFrame.getSampleCount(); ++i) {
-            if (dataFrame.getData()[dataColumn][i].equals(label)) {
+            if (dataFrame.getData()[dataColumn][i].equals(attr)) {
                 hashTable.put(dataFrame.getTargetData()[i], hashTable.get(dataFrame.getTargetData()[i]) + 1);
                 count++;
             }
