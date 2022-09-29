@@ -1,76 +1,67 @@
-\documentclass[]{article}
-
+\documentclass[runningheads]{llncs}
+\pagestyle{plain} 
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{appendix}
+\graphicspath{ {./images/} }
+\usepackage{comment}
+\usepackage{xcolor}
+\usepackage{placeins}
+\usepackage{pgfplots}
+\usepackage{wrapfig}
+\usepackage{endnotes}
 
-\setlength\parindent{0pt}
 
-%opening
-\title{Fuzzy Decision Tree for Accurate Breast Cancer Diagnosis}
-\author{Jed Lim, Karimi Zayan, Matthew Kan, Makuyh Das}
-\date{12 October, 2022}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+
+\usepackage{dashbox}
+
+\newcommand{\scalefactor}{0.9}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\usepackage{nicodemus}
+\usepackage{booktabs}
+\usepackage{nicefrac}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage[caption=false]{subfig}
+
+\usepackage{pbox}
+% \usepackage{fancybox}
+
+\usetikzlibrary{arrows,automata,positioning}
+\usetikzlibrary{patterns}
+\usetikzlibrary{pgfplots.groupplots}
+\pgfplotsset{width=4cm,compat=1.16}
+%\usepackage[margin=1in,footskip=0.25in]{geometry}
+
+\input{header}
+\input{macros}
 
 \begin{document}
-
-\maketitle
-\section{Background}
-Breast cancer is the number one most common cancer amongst women in Singapore. Early and accurate diagnosis of breast cancer is important for breast-saving and life-saving treatment. \\
-
-The gold standard for the diagnosis of breast cancer is by surgically removing the breast lump with a complete microscopic examination of the breast tissue to look for cancer cells. \\
-
-Fine needle aspiration is an alternative that allows the doctor to take out a small amount of tissue from the breast lump, without the need for surgery to remove the entire breast lump. By examining the characteristics of the cells, doctors have been able to diagnose breast cancer with variable success. Increasing the success of fine needle aspiration allows for diagnosis of breast cancer without the need for a woman to undergo surgery to remove the breast lump. \\
-
-To resolve this, this project uses a fuzzy decision tree to classify breast tumor cells into malignant cancer cells or benign non-cancerous cells. \\
-
-\section{Dataset}
-The dataset used was the Breast Cancer Wisconsin (Diagnostic) Data Set from the University of Irvine (UCI) Machine Learning Repository.  
-
-The dataset contained 569 instances, with no missing data. 357 instances were benign (not cancerous) and 212 were malignant (cancerous). \\
-
-The features were computed from digitalized images of fine needle aspirates of breast tumors.  \\
-
-The features describe 10 characteristics of the cell nuclei present in the images:
-
-\begin{itemize}
-	\item The radius of an individual nucleus
-	\item The nuclear perimeter
-	\item The nuclear area
-	\item Compactness of the nucleus
-	\item The smoothness of the contour of the nucleus
-	\item The number of contour concavities
-	\item The symmetry of the nuclear contour
-	\item The texture of the cell nucleus
-\end{itemize}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.45\linewidth]{screenshot001}
-	\hspace{0.5cm}
-	\includegraphics[width=0.45\linewidth]{screenshot002}
-	\caption{A picture of breast cells. The cells on the left are begin while the cells on the right are cancerous.}
-	\label{fig:images}
-\end{figure}
-
-The mean, standard error and worst (mean of the three largest values) of these features are computed for each image, resulting in 30 features in the UCI dataset. \\
-
-We follow in the footsteps of Sizilio et al. \ref{fna} and add newly generated features of homogeneity and uniformity that were demonstrated to have diagnostic importance. \\
-
-Uniformity is the difference between the radius worst value and the radius mean value and is an indication of the variability in size of the cell nuclei. \\
-
-Homogeneity is the difference between the worst value of symmetry and the mean value of symmetry and is an indication of the symmetry of the cell nuclei. \\
-
-According to Sizilio et al., the features of area, perimeter, homogeneity and uniformity produced the best results. Thus, we use these 4 feature and drop all other features. \\
-
-The minimum and maximum area, perimeter, homogeneity and uniformity for the 2 labels (benign and malignant) are computed and displayed in the table below. \\
-
-Fuzzy intervals are present for each of the above 4 features, whereby the benign values are within the range of the malignant values. This means that it is not linearly possible to diagnosis a breast lump as benign or malignant using a simple decision tree. Thus, we shall resort to using a fuzzy decision tree. \\
-
-\section{Fuzzy Decision Tree}
-A typical decision tree works by building a set of if statements to determine which class something belongs to. \\
-
-At each branch of the decision tree, depending on whether a given statement is true / false, either the left or right path is chosen. \\
-
-On the other hand, a fuzzy decision tree makes use of fuzzy logic, where the truth value of variables can range between 0 and 1 instead of being exactly 0 or exactly 1. \\
-
-
-
+	\title{CS5131 Programming Assignment 2} 
+	\author{Jed Lim \and Karimi Zayan \and Mayukh Das \and Matthew Kan}
+	\maketitle
+	
+	\setlist[itemize]{leftmargin=.4cm}
+	\setlist[enumerate]{leftmargin=.4cm}
+	
+	\input{funny}
+	
+	\newpage
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pagebreak 
+	%\begin{appendix}
+	%\end{appendix}
+	
+	
+	
 \end{document}

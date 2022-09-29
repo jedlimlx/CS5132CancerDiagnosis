@@ -1,0 +1,1434 @@
+%!TEX root = main.tex
+\usepackage{url,makecell,enumitem}
+%\usepackage{graphicx,amsmath,amssymb,xspace,bm,url,verbatim}  %natbib
+%
+%
+%\newif\ifauthor % give author names
+%\newif\ifsubmission   %for submission version
+%\newif\iffinal        %for springer final version
+%\newif\iffull         %for full version
+%\newif\iftwocol       %for acm ccs two-column format
+%\newif\ifspringer     %for springer version
+%\newif\ifnofootnotes  %for springer version
+%\newif\ifshownotes      %have notes to one another show up
+%
+%\twocoltrue
+%\springerfalse
+%
+%\ifspringer\else
+%
+%\newtheorem{thm}{Theorem}
+%\newtheorem{lem}[thm]{Lemma}
+%\newtheorem{cor}[thm]{Corollary}
+%\newtheorem{prop}[thm]{Proposition}
+%\newtheorem{clm}[thm]{Claim}
+%\newtheorem{defn}[thm]{Definition}
+%
+%\newtheorem{dup}{Theorem}
+%\newenvironment{duplicate}{\begin{dup}}{\end{dup}}
+%
+%\newenvironment{theorem}{\begin{thm}}{\end{thm}}
+%\newenvironment{lemma}{\begin{lem}}{\end{lem}}
+%\newenvironment{corollary}{\begin{cor}}{\end{cor}}
+%\newenvironment{proposition}{\begin{propo}}{\end{propo}}
+%\newenvironment{definition}{\begin{defn}}{\end{defn}}
+%\newenvironment{claim}{\begin{clm}\begin{rm}}{\end{rm}\end{clm}}
+%
+%\iftwocol\else
+%% deluxe proof environment
+%\def\qsym{\vrule width0.6ex height1em depth0ex}
+%\newcount\proofqeded
+%\newcount\proofended
+%\def\qed{{\hspace{1pt}\rule[-1pt]{3pt}{9pt}}
+%\end{rm}\addtolength{\parskip}{-0pt}
+%\setlength{\parindent}{\saveparindent}
+%\global\advance\proofqeded by 1 }
+%\def\qedenv{
+%\end{rm}\addtolength{\parskip}{-0pt}
+%\setlength{\parindent}{\saveparindent}
+%\global\advance\proofqeded by 1 }
+%\newenvironment{proof}%
+% {\proofstart}%
+% {\ifnum\proofqeded=\proofended~\qed\fi \global\advance\proofended by 1
+%  \medskip}
+%\newenvironment{proofenv}%
+% {\proofenvstart}%
+% {\ifnum\proofqeded=\proofended\qedenv\fi \global\advance\proofended by 1
+%  \medskip}
+%\makeatletter
+%\def\proofstart{\@ifnextchar[{\@oprf}{\@nprf}}
+%\def\proofenvstart{\@ifnextchar[{\@osprf}{\@nsprf}}
+%\def\@oprf[#1]{\begin{rm}\protect\vspace{6pt}\noindent{\bf Proof of #1:\ }%
+%\addtolength{\parskip}{5pt}\setlength{\parindent}{0pt}}
+%\def\@osprf[#1]{\begin{rm}\protect\vspace{6pt}\noindent
+%\addtolength{\parskip}{5pt}\setlength{\parindent}{0pt}}
+%\def\@nprf{\begin{rm}\protect\vspace{6pt}\noindent{\bf Proof:\ }%
+%\addtolength{\parskip}{5pt}\setlength{\parindent}{0pt}}
+%\def\@nsprf{\begin{rm}\protect\vspace{6pt}\noindent%
+%\addtolength{\parskip}{5pt}\setlength{\parindent}{0pt}}
+%\fi
+%
+%
+%\fi
+%
+\usepackage{latexsym}   
+\usepackage{mathrsfs}   
+%\usepackage{eufrak}
+\usepackage{mathtools}  %for \xmapsto
+\usepackage{color} 
+\usepackage{setspace}
+\usepackage{xspace}
+\usepackage{multirow}
+\usepackage{epsfig}
+%
+%%\newenvironment{frcseries}{\fontfamily{frc}\selectfont}{}
+%%\newcommand{\textfrc}[1]{{\frcseries#1}}
+%%\newcommand{\mathfrc}[1]{{\text{\textfrc{#1}}}}
+%
+%\DeclareMathAlphabet{\mathsl}{OT1}{cmr}{m}{sl}
+\DeclareMathAlphabet{\mathsc}{OT1}{cmr}{m}{sc}
+%\DeclareMathAlphabet{\mathslbf}{OT1}{cmr}{bx}{sl}
+%% math script font; extra commands to make slightly larger
+%\DeclareFontFamily{OT1}{pzc}{}
+%\DeclareFontShape{OT1}{pzc}{m}{it}%
+%             {<-> s * [1.150] pzcmi7t}{}
+%\DeclareMathAlphabet{\mathscript}{OT1}{pzc}{m}{it}
+%
+%%
+%% hack to reduce spacing in the bibliography (found on-line)
+%% 
+% \let\oldthebibliography=\thebibliography
+%  \let\endoldthebibliography=\endthebibliography
+%  \renewenvironment{thebibliography}[1]{%
+%    \begin{oldthebibliography}{#1}%
+%      \setlength{\parskip}{0ex}%
+%      \setlength{\itemsep}{0.5ex}%
+%  }%
+%  {%
+%    \end{oldthebibliography}%
+%  }
+%
+%
+%\newcommand{\CondProb}[2]{\Pr[#1\,|\,#2]}
+%
+%\newenvironment{newmath}{\begin{displaymath}%
+%\setlength{\abovedisplayskip}{5pt}%
+%\setlength{\belowdisplayskip}{5pt}%
+%\setlength{\abovedisplayshortskip}{5pt}%
+%\setlength{\belowdisplayshortskip}{5pt} }{\end{displaymath}}
+%
+%\newenvironment{newequation}{\begin{equation}%
+%\setlength{\abovedisplayskip}{5pt}%
+%\setlength{\belowdisplayskip}{5pt}%
+%\setlength{\abovedisplayshortskip}{5pt}%
+%\setlength{\belowdisplayshortskip}{5pt} }{\end{equation}}
+%
+%\newcommand{\eqq}{\:=\:}
+%\newcommand{\leqs}{\:\leq\:}
+%
+%\setlength{\fboxsep}{3pt}
+%
+%%\makeatletter
+%%\renewcommand\bibsection%
+%%{
+%%  \section*{\refname
+%%    \@mkboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}}
+%%}
+%%\makeatother
+%
+%\DeclareMathAlphabet{\mathsl}{OT1}{cmr}{m}{sl} 
+%\DeclareMathAlphabet{\mathsc}{OT1}{cmr}{m}{sc}
+%
+%\newcounter{ctr}
+%\newcounter{savectr}
+%\newcounter{ectr}
+%\newcounter{eectr}
+%
+%%Random oracle macros
+%\newcommand{\roproc}{\mathsc{Hash}}
+%\newcommand{\roprocsim}{\mathsc{HashSim}}
+%\newcommand{\rotable}{\mathsf{H}}
+%\newcommand{\phasethree}{\mathtt{ro}}
+%
+%\newenvironment{newenum}{%
+%\begin{list}{{\rm (\arabic{ctr})}\hfill}{\usecounter{ctr} \labelwidth=15pt%
+%\labelsep=7pt \leftmargin=22pt \topsep=0pt%
+%\setlength{\listparindent}{\saveparindent}%
+%\setlength{\parsep}{\saveparskip}%
+%\setlength{\itemsep}{2pt} }}{\end{list}}
+%
+%\newenvironment{newenumbf}{%
+%\begin{list}{{\bf \arabic{ctr}.}\hfill}{\usecounter{ctr} \labelwidth=15pt%
+%\labelsep=5pt \leftmargin=20pt \topsep=2pt%
+%\setlength{\listparindent}{\saveparindent}%
+%\setlength{\parsep}{\saveparskip}%
+%\setlength{\itemsep}{2pt} }}{\end{list}}
+%
+%\newenvironment{tiret}{%
+%\begin{list}{\hspace{1pt}\rule[0.5ex]{5pt}{1pt}\hfill}{\labelwidth=12pt%
+%\labelsep=2pt \leftmargin=14pt \topsep=1pt%
+%\setlength{\listparindent}{\saveparindent}%
+%\setlength{\parsep}{\saveparskip}%
+%\setlength{\itemsep}{1pt} }}{\end{list}}
+%
+%
+%\newcommand{\Prob}[1]{{\Pr\left[\,{#1}\,\right]}}
+%% \newcommand{\CondProb}[2]{{\Pr}\left[\, #1\,\left|\right.\,#2\,\right]}
+%
+%\newcommand{\secure}{ secure\xspace} %with or without the dash?
+%\newcommand{\security}{ security\xspace} %with or without the dash?
+%
+\newcommand{\bits}{\{0,1\}}
+\newcommand{\getsr}{{\:{\leftarrow{\hspace*{-3pt}\raisebox{.75pt}{$\scriptscriptstyle\$$}}}\:}}
+%\newcommand{\getss}{\gets}
+%
+%\newcommand{\somemark}{\vartriangleright}
+%\newtheorem{poi}{$\somemark$}
+%\newenvironment{point}{\begin{poi}
+%\begin{rm}}  {\end{rm}
+%\end{poi}}
+%
+%\newcommand{\captionfont}{\iftwocol\else \small\fi}
+%\newcommand{\info}{\phi}         % the string 
+%\newcommand{\information}{\Phi}  % reveal function (leakage function) -- that which one expect to leak
+%
+\newcommand{\heading}[1]{\vspace{4pt}\noindent\underline{\textsc{#1}}}
+%\newcommand{\uheading}[1]{\vspace{5pt}\noindent\underline{#1}}
+%\newcommand{\headingg}[1]{\noindent\underline{\textsc{#1}}}
+%\newcommand{\noskipheading}[1]{\iftwocol\noindent\fi \textsc{#1} }
+%
+%
+%
+%\newcommand{\smidge}{\hspace{0.1ex}}
+%\newcommand{\smidgee}{\hspace{0.2ex}}
+%
+%
+%\ifshownotes
+%\newcommand{\prnote}[1]{{\footnotesize \bf PR writes: \sl #1}}
+%\newcommand{\mbnote}[1]{{\footnotesize \bf MB writes: \sl #1}}
+%\newcommand{\kpnote}[1]{{\footnotesize \bf KP writes: \sl #1}}
+%\else
+%\newcommand{\prnote}[1]{}
+%\newcommand{\mbnote}[1]{}
+%\newcommand{\kpnote}[1]{}
+%\fi
+%
+%
+%
+%\newcommand{\expReal}{\mathrm{Real}}
+%\newcommand{\expFake}{\mathrm{Fake}}
+%
+%
+%\newcommand{\vecx}{\mathbf{x}}
+%\newcommand{\vecs}{\mathbf{s}}
+%\newcommand{\vect}{\mathbf{t}}
+%\newcommand{\vecTw}{\mathbf{T}}
+%\newcommand{\vecy}{\mathbf{y}}
+%\newcommand{\vecz}{\mathbf{z}}
+%\newcommand{\vectau}{\bm{\tau}}
+%\newcommand{\dotdot}{\,..\,}
+%
+%\newcommand{\Initialize}{\mathsc{Initialize}}
+%\newcommand{\Ch}{\mathsc{Ch}}
+%\newcommand{\Finalize}{\mathsc{Finalize}}
+%
+%\newcommand{\Cipher}{\mathsc{Enc}}
+%\newcommand{\DCipher}{\mathsc{Dec}}
+%\newcommand{\PProc}{\mathsc{\Pi}}
+%\newcommand{\PInvProc}{\mathsc{\Pi^{-1}}}
+%
+%
+%
+%\newcommand{\siminput}{\mathsl{input}}
+%\newcommand{\query}{\mathsl{query}}
+%\newcommand{\xxx}{\ensuremath{\mathrm{xxx}}}
+%\newcommand{\counter}{\mathsl{cnt}}
+%
+%\newcommand{\AES}{\mathrm{AES}}
+%\newcommand{\sha}{\mathrm{sha}}
+%\newcommand{\xor}{\oplus}
+%\newcommand{\xxor}{\!\oplus\!}
+%\newcommand{\eq}{\!=\!}
+%\newcommand{\gatefield}{\gamma} 
+%
+%\newcommand{\firstlast}[1]{#1}
+%\newcommand{\blocklen}{k}
+%\newcommand{\tlen}{\tau}
+%\newcommand{\klen}{k}
+%\newcommand{\nlen}{\eta}
+%
+%\newcommand{\ivl}{\eta}   %IV length
+%
+%\newcommand{\AD}{A}
+%\newcommand{\IV}{N}
+%\newcommand{\IVr}{\mathit{IV}}
+%\newcommand{\ADspace}{{\mathcal{A}}}
+%\newcommand{\IVspace}{{\mathcal{N}}}
+%\newcommand{\calIV}{{\IVspace}}
+%\newcommand{\calAD}{{\ADspace}} 
+%
+\newcommand{\apref}[1]{Appendix~\ref{#1}}
+\newcommand{\corref}[1]{Corollary~\ref{#1}}
+\newcommand{\figref}[1]{Fig.~\ref{#1}}
+\newcommand{\lemref}[1]{Lemma~\ref{#1}}
+\newcommand{\secref}[1]{Section~\ref{#1}}
+\newcommand{\thref}[1]{Theorem~\ref{#1}}
+\newcommand{\defref}[1]{Definition~\ref{#1}}
+\newcommand{\propref}[1]{Proposition~\ref{#1}}
+%
+%\ifspringer
+%\newtheorem{newdef}[theorem]{Definition}
+%\newtheorem{newprop}[theorem]{Proposition}
+%\fi
+%
+%\iftwocol
+%%\newtheorem{theorem}{Theorem}
+%\newtheorem{newprop}{Proposition}
+%%\newtheorem{corollary}{Corollary}
+%%\newtheorem{lemma}{Lemma}
+%\fi
+%
+%\newcommand{\hF}{{E}}
+%\newlength{\saveparindent}
+%\setlength{\saveparindent}{\parindent}
+%\newlength{\saveparskip}
+%\setlength{\saveparskip}{\parskip}
+%
+\renewcommand{\mid}{\,:\,}
+%\renewcommand{\ng}{q}   %number of gates  
+%\newcommand{\nq}{q}   
+%\newcommand{\nw}{r}     %number of wires 
+%\newcommand{\nr}{r}    
+%\newcommand{\bt}[1]{T^{#1}_{0}}
+%
+%\newcommand{\out}{0}
+%
+%\newcommand{\BOT}{\varepsilon}
+%\newcommand{\emptystring}{\varepsilon}
+%
+%\newcommand{\Real}{\mathrm{Real}}
+%\newcommand{\Fake}{\mathrm{Fake}}
+%
+%\newcommand{\incomingleft}{A}
+%\newcommand{\incomingleftt}[1]{\incomingleft_{#1}}
+%\newcommand{\incomingright}{B} 
+%\newcommand{\incomingrightt}[1]{\incomingright_{#1}}
+%\newcommand{\outgoing}{C} 
+%\newcommand{\outgoingg}[1]{\outgoing_{#1}}
+%\newcommand{\outputtowire}{w}    %was omega D Z  W
+%\newcommand{\outputtowiree}[1]{\outputtowire_{#1}}
+%\newcommand{\functionn}[1]{\functionn_{#1}}
+%\newcommand{\outputs}{\Rightarrow}
+%
+%\newcommand{\concat}{\;\|\;}
+%\newcommand{\concatt}{\,\|\,}
+%\newcommand{\concattt}{\:\|\:}
+%\newcommand{\Concat}{}
+%\newcommand{\Concatt}[2]{{#1}\concat{#2}}
+%
+%\newcommand{\gate}{g} % a generic gate
+%\newcommand{\gatee}{h} % a generic gate
+%
+%\newcommand{\success}{\textsf{success}}
+%\newcommand{\outoftime}{\textsf{out-of-time}}
+%
+%\newcommand{\seed}{S}
+%\newcommand{\triples}{\mathsf{Tr}}
+%\newcommand{\set}[2]{\{#1\!:\,#2\}}
+%\newcommand{\graph}{\mathsf{G}}
+%\newcommand{\El}{\mathsf{El}}
+%
+%\newcommand{\BB}{\mathsf{A}}
+%\newcommand{\BBsq}{\mathsf{A}_{s,q}}
+%\newcommand{\BBkl}{\BB.\mathsf{kl}}
+%\newcommand{\BBsqkl}{\BBsq.\mathsf{kl}}
+%\newcommand{\calA}{{\mathcal{A}}}
+%\newcommand{\calB}{{\mathcal{B}}}
+%\newcommand{\calC}{{\mathcal{C}}}
+%\newcommand{\calD}{\SE.\mathsf{Dec}}
+%\newcommand{\calE}{\SE.\mathsf{Enc}}
+%\newcommand{\calF}{{\mathcal{F}}}
+%\newcommand{\calI}{{\mathcal{I}}}
+%\newcommand{\calK}{\mathcal{K}}
+%\newcommand{\calM}{{\mathcal{M}}}
+%\newcommand{\calS}{{\mathcal{S}}}
+%\newcommand{\calT}{{\mathcal{T}}}
+%\newcommand{\calU}{{\mathscr{U}}}
+%\newcommand{\calX}{{\mathcal{X}}}
+%\newcommand{\calY}{{\mathcal{Y}}}
+%\newcommand{\calZ}{{\mathcal{Z}}}
+%
+%
+%\newcommand{\FF}{\calF}  %{\mathrm{Functs}}}
+%\newcommand{\sep}{,\,}  
+%\newcommand{\sepFF}{,\,\FF}  %{\mathrm{Functs}}}
+%\newcommand{\N}{{\mathbb{N}}}
+%\newcommand{\R}{{\mathbb{R}}}
+%\newcommand{\Z}{{\mathbb{Z}}}
+%
+%%\newcommand{\GCEval}{\mathsf{Eval}}
+%\newcommand{\GC}{F}  %\textsl{GC}}
+%\newcommand{\indcomp}{\stackrel{c}{\approx}}
+%
+%\newcommand{\tobits}[1]{\langle #1\rangle}
+%% \newcommand{\code}[1]{\langle {#1} \rangle}
+%\newcommand{\code}[1]{({#1})}
+%
+%\newcommand{\ttt}{t}
+%\newcommand{\sss}{s}
+%\newcommand{\SSS}{\{0,1\}^*}
+%
+%
+%\newcommand{\Outputs}{\mathrm{Outputs}}
+%\newcommand{\OutputWires}{\mathrm{OutputWires}}
+%\newcommand{\InputWires}{\mathrm{InputWires}}
+%\newcommand{\Inputs}{\mathrm{Inputs}}
+%\newcommand{\Wires}{\mathrm{Wires}}
+%\newcommand{\Outgoing}{\mathrm{Outgoing}}
+%\newcommand{\Gates}{\mathrm{Gates}}
+%\newcommand{\Table}{\mathrm{Table}}
+%\newcommand{\Tables}{\mathrm{Tables}}
+%\newcommand{\Token}{\mathrm{Token}}
+%\newcommand{\Tokens}{\mathrm{Tokens}}
+%\newcommand{\Params}{\mathrm{Params}}
+%
+%\newcommand{\Prop}{\mathsl{Prop}}
+%\newcommand{\propagate}{P}   %was p
+%
+%\newcommand{\entry}[1] {{{\propagate}_{#1}}}
+%\newcommand{\entryy}[2]{{{\propagate}[{#1},{#2}]}} 
+%
+%\newcommand{\Entry}[1] {{\entry{#1}}}
+%\newcommand{\Entryy}[2]{{\Entryy{#1}{#2}}}
+%
+%\newcommand{\row}[1]{\mathsl{row}[{#1}]}
+%
+%\newcommand{\interpretation}{S} % make it consistent with Garble
+%
+%\newcommand{\atoken}{V}
+%\newcommand{\btoken}{I}
+%\newcommand{\tokenlist}{X}   % list of n tokens, one for each input 
+%\newcommand{\tokenlistt}{T}  % list of 2n tokens, two for each input
+%\newcommand{\tokenlisttt}{Z} % list of r tokens, one for each wire
+%
+%
+%\newcommand{\token}{X}
+%
+%\newcommand{\GCGoutput}{(\CCC, \E, \D)}   
+%
+%\newcommand{\Garbleoutput}{(\F,\E, \D)}
+%\newcommand{\Simoutput}   {(\F, \tokenlist, \D)}
+%
+%\newcommand{\vecT}{{T}}
+%\newcommand{\tokenotp}{\vecT}    %{\cal T}}
+%\newcommand{\tokeninput}{x}
+%\newcommand{\closure}{\calX}
+%\newcommand{\closuree}{\closure}
+%\newcommand{\bitinput}{x}  %X
+%\newcommand{\bitclosure}{\calX}
+%\newcommand{\bitclosuree}{\bitclosure}
+%\newcommand{\CC}{\f}
+%%\newcommand{\CCC}{\calC}
+%\newcommand{\CCC}{\F}
+%\newcommand{\TopoC}{f^{-}}
+%
+%\newcommand{\ia}{{a}}  %was alpha, beta, gamma
+%\newcommand{\ib}{{b}}
+%\newcommand{\ic}{{c}}
+%
+%\newcommand{\na}{{\mathtt{\alpha}}}
+%\newcommand{\nb}{{\mathtt{\beta}}} 
+%\newcommand{\nc}{{\mathtt{\varsigma}}}  %zeta
+%\newcommand{\np}{{\mathtt{P}}} 
+%
+%\newcommand{\tta}{{\mathtt{a}}}
+%\newcommand{\ttb}{{\mathtt{b}}}
+%\newcommand{\ttc}{{\mathtt{c}}}
+%\newcommand{\ttx}{{\mathtt{x}}}
+%
+%\newcommand{\rma}{{\mathrrm{a}}}
+%\newcommand{\rmb}{{\mathrm{b}}}
+%\newcommand{\rmc}{{\mathrm{c}}}
+%
+%\newcommand{\nK}{K}
+%\newcommand{\nA}{A}
+%\newcommand{\nL}{{\mathtt{L}}}
+%\newcommand{\nR}{{\mathtt{R}}}
+%\newcommand{\nB}{B}
+%\newcommand{\nC}{{\mathtt{C}}} 
+%\newcommand{\nT}{T} 
+%\newcommand{\nV}{{\mathtt{V}}}
+%\newcommand{\nI}{{\mathtt{I}}}
+%\newcommand{\ttA}{\nA}
+%\newcommand{\ttB}{\nB}
+%\newcommand{\ttK}{K}
+%\newcommand{\ttP}{{\mathtt{P}}}
+%\newcommand{\ttC}{{\mathtt{C}}}
+%\newcommand{\ttS}{{\mathtt{S}}}
+%\newcommand{\ttT}{\nT}
+%\newcommand{\ttX}{\mathtt{X}}
+%\newcommand{\droplsb}[1]{#1_*}
+%
+%\newcommand{\alphaa}{\gamma''}
+%\newcommand{\betaa}{\gamma'}
+%
+%\newcommand{\PPP}{F} 
+%
+%\newcommand{\then}{;\;}
+%\newcommand{\andthen}{\!:\;}
+%
+%\newcommand{\mystrut}{\rule{0em}{2.5ex}}
+%\newcommand{\ms}{\mystrut}
+%\newcommand{\cm}{\checkmark}
+%
+%\newcommand{\Maps}[2]{\mathrm{Func}(#1,#2)}
+%
+%\newcommand{\circuit}{(n,m,\ng,   \incomingleft,\incomingright,\function)}
+%\newcommand{\circuitt}{(n,m,\ng,  \incomingleft',\incomingright',\function)}
+%\newcommand{\circuittt}{(n,m,\ng',  \incomingleft',\incomingright',\function')}
+%\newcommand{\Circuit}{(n,m,\ng, \incomingleft,\incomingright,\function)}
+%\newcommand{\shortcircuit}{(n,m,\ng,   \incomingleft,\incomingright,\function)}
+%
+%\newcommand{\topologicalcircuit}{(n,m,\ng, \incomingleft,\incomingright)}
+%\newcommand{\topologicalcircuitt}{(n,m,\ng, \incomingleft',\incomingright')}
+%\newcommand{\garbledcircuit}{(n,m,\ng, \incomingleft,\incomingright,\propagate)}
+%\newcommand{\garbledcircuitt}{(n,m,\ng, \incomingleft',\incomingright',\propagate)}
+%\newcommand{\shortgarbledcircuit}{(n,m,\ng, \incomingleft,\incomingright,\propagate)}
+%
+%
+%\newcommand{\Topo}{\mathrm{Topo}}
+%\newcommand{\Size}{\mathrm{Size}}
+%
+%
+%\newcommand{\GARBLEE}{\GARBLE\,'}
+%\newcommand{\GARBLEElist}{(\Garble', \Enc', \Dec', \Eval\,', \eval\,')}
+%
+%\newcommand{\EE}{\mathcal{E}}
+%\newcommand{\DD}{\mathcal{D}}
+%\newcommand{\EEinv}{{\mathcal{D}}}
+%
+%\newcommand{\EEE}[4]{\EE(#1,#2,#3,#4)}
+%\newcommand{\eee}[4]{\EE_{#1\smidgee#2}^{#3}(#4)}
+%
+%\newcommand{\DDD}[4]   {\EEinv(#1\,#2,#3,#4)}
+%\newcommand{\EEEinv}[4]{\EEinv(#1\,#2,#3,#4)}
+%
+%\newcommand{\ddd}[4]{\EEinv_{#1\smidgee#2}^{#3}(#4)}
+%
+%
+%\newcommand{\Dyn}{!}
+%\newcommand{\Dynn}[1]{{#1}\Dyn}
+%\newcommand{\DY}{!!}
+%\newcommand{\DYY}[1]{{#1}\DY}
+%\newcommand{\Uni}[1]{{#1}_\$}
+%
+%\newcommand{\ekw}{\mathtt{e}}
+%\newcommand{\dkw}{\mathtt{d}}
+%
+%\newcommand{\Gb}{\mathsf{Gb}}
+%\newcommand{\En}{\mathsf{En}}
+%\newcommand{\De}{\mathsf{De}}
+%\newcommand{\Ev}{\mathsf{Ev}}
+%\newcommand{\ev}{\mathsf{ev}}
+%
+%\newcommand{\xn}{\mathsf{n}}
+%\newcommand{\xm}{\mathsf{m}}
+%\newcommand{\fn}{{f.n}}
+%\newcommand{\fnn}[1]{{f_{#1}.n}}
+%\newcommand{\fm}{{f.m}}
+%\newcommand{\fprimen}{{f'\!.n}}
+%\newcommand{\fprimem}{{f'\!.m}}
+%
+%\newcommand{\informationn}{\textsf{n}'}
+%\newcommand{\informationm}{\textsf{m}'} 
+%
+%\newcommand{\Garble}{\mathsf{Gb}}
+%\newcommand{\GarbleSplit}{\overline{\mathsf{Gb}}}
+%\newcommand{\Eval}{\mathsf{Ev}}
+%\newcommand{\pEval}{\overline{\mathsf{Ev}}}
+%\newcommand{\CEval}{{\mathsf{Ev}}}
+%\newcommand{\eval}{\mathsf{ev}}    
+%\newcommand{\peval}{\overline{\mathsf{ev}}}
+%\newcommand{\ceval}{\mathsf{ev}}
+%\newcommand{\circeval}{\mathsf{ev}_{\mathsf{circ}}}
+%\newcommand{\Encode}{\mathsf{En}}
+%\newcommand{\AIKEncode}{\mathsf{Enc}}
+%\newcommand{\Decode}{\mathsf{De}}
+%\newcommand{\AIKDecode}{\mathsf{Dec}}
+%\newcommand{\AIKSim}{\mathsf{Sim}}
+%\newcommand{\Gen}{\mathsl{Gen}}
+%\newcommand{\Decc}[1]{\Dec(#1)}        
+%
+%\newcommand{\evall}[2]{\eval_{#1}(#2)}
+%
+%\newcommand{\Evall}[1]{{#1}_\Eval}
+%\newcommand{\Evale}[1]{\Eval(#1)}
+%
+%\newcommand{\GARBLElist}{(\Garble,\allowbreak \Enc,\allowbreak\Dec,\allowbreak \Eval,\allowbreak \eval)}
+%%\newcommand{\select}{\mathsl{select}}
+%\newcommand{\Standard}{\mathsf{Standardize}}
+%\newcommand{\Parse}{\mathsf{Parse}}
+%
+%%\newcommand{\Evalt}{\mathsl{Eval}}
+%%\newcommand{\Ft}{\tilde{F}}
+%
+%\newcommand{\interpret}{\phi}
+%
+%\newcommand{\EVAL}{\mathsl{EVAL}}
+%
+%\newcommand{\bprime}{b\,'}
+%\newcommand{\Func}{\mathrm{Func}}
+%\newcommand{\Funcc}[2]{\Func({#1},{#2})}
+%\newcommand{\Dom}[1]{\mathrm{Dom}({#1})}
+%%\newcommand{\Domain}{\mathrm{Dom}}
+%\newcommand{\Ran}[1]{\mathrm{Ran}({#1})}
+%%\newcommand{\Range}{\mathrm{Ran}}
+%\newcommand{\BadDom}{\mathrm{BadDom}}
+%\newcommand{\BadRan}{\mathrm{BadRan}}
+%
+%
+%\newcommand{\map}{\pi}
+%
+%%\newcommand{\boldstar}{{\boldsymbol{*}}}
+%%\newcommand{\bboldstar}{^{\boldsymbol{\,!}}}
+%%\newcommand{\bboldstar}{{\boldsymbol{!}}}
+%\newcommand{\bboldstar}{!}
+%
+%\newcommand{\Garblefont}[1]{\mathrm{#1}}
+%\newcommand{\OT}{\Garblefont{OT}}
+%
+%
+\newcommand{\Adv}{\mathbf{Adv}}
+%\newcommand{\cpa}{\mathrm{prp}}
+%\newcommand{\kdm}{\mathrm{kdm}}
+%\newcommand{\rr}{\mathrm{rr}}
+%\newcommand{\fg}{\mathrm{fg}}
+%
+%\newcommand{\hyp}{\text{-}}
+%
+%\newcommand{\extend}[1]{\overline{#1}}
+%
+%\newcommand{\xxxnotion}  {\mathrm{xxx}}
+%\newcommand{\xnotion}[1] {\mathrm{xxx.#1}}
+%
+%
+%
+%
+%\definecolor{light-gray}{gray}{0.85}
+%\newcommand{\highlight}[1]{\fcolorbox{light-gray}{light-gray}{#1}}
+%
+%
+%\newcommand{\lsb}{\mathrm{lsb}}
+%\newcommand{\msb}{\mathrm{msb}}
+%
+%\newcommand{\Code}[1]{\langle{#1}\rangle}
+%\newcommand{\Pair}[2]{#1\|#2}
+%\newcommand{\Split}[2]{(#1,#2)}
+%
+%
+%\newcommand{\encode}[1]{\hat{#1}}
+%\newcommand{\adversary}{{\mathscr{A}}}
+%\newcommand{\adversaryI}{{\calI}}
+%\newcommand{\gadversary}[1]{{A}_{\mathrm{#1}}}
+%\newcommand{\PrivIndA}{\mathcal{A}}
+%\newcommand{\PrivSimA}{\mathcal{B}}
+%\newcommand{\PrivSimAC}{\mathcal{B}_{\GARBLE}}
+%\newcommand{\OblvIndA}{\mathcal{A}}
+%\newcommand{\OblvSimA}{\mathcal{B}}
+%\newcommand{\PfeSimA}{\mathcal{B}}
+%\newcommand{\OTSimA}{\mathcal{B}_{\OTscheme}}
+%\newcommand{\PrfA}{\mathcal{D}}
+%\newcommand{\aclass}[1]{\calA_{\mathrm{#1}}}
+%
+%% \newcommand{\calY}{{\cal Y}}
+%\newcommand{\advice}{{\alpha}}
+%\newcommand{\elusive}[2]{\varepsilon(#1, #2)}
+%\newcommand{\LP}{\mathtt{Gb3}}
+%\newcommand{\newPi}{\mathrm{\Pi}}
+%%\newcommand{\Sim}{{\cal S}}
+%\newcommand{\Sim}{{\calS}}
+%\newcommand{\OTSim}{{\calS}_{\OTscheme}}
+%\newcommand{\GSim}{{\calS}_{\GARBLE}}
+%\newcommand{\sepSim}{,\,\Sim}
+%
+%\newcommand{\Output}{\mathrm{Output}}
+%\newcommand{\sfe}{\mathrm{SFE}}
+%\newcommand{\pfe}{\mathrm{PFE}}
+%\newcommand{\bitsem}{\phi}
+%\newcommand{\otp}{P}  %\cal P
+%\newcommand{\OTC}{\mathrm{OTC}}
+%\newcommand{\OTM}{\mathrm{OTM}}  
+%%\newcommand{\OTIME}{\mathrm{OTIME}}
+%\newcommand{\OTIME}{\mathrm{OTP}}
+%\newcommand{\OTP}{\mathrm{OTP}}
+%\newcommand{\Compile}{\mathrm{Create}}  %Compile
+%\newcommand{\Create}{\mathrm{Create}}  %Compile
+%\newcommand{\Compute}{\mathrm{Evaluate}}
+%\newcommand{\Evaluate}{\mathrm{Evaluate}}
+%\newcommand{\Equal}{\mathtt{Equal}}
+%\newcommand{\fanout}{\nu}
+%\newcommand{\xx}{\mathsf{X}}
+%\newcommand{\yy}{\mathsf{Y}}
+%\newcommand{\PX}{\mathsf{X}} %P_\xx
+%\newcommand{\PY}{\mathsf{Y}} %P_\yy}
+%\newcommand{\cc}{\mathsf{F}} %was \f
+%\newcommand{\PC}{\cc}  %P_\cc
+%\newcommand{\ID}{\mathrm{ID}}
+%%Pseudocode
+\newcommand{\constfont}[1]{{\textsf{#1}}}
+\newcommand{\true} {{\constfont{true}}}
+\newcommand{\false}{{\constfont{false}}}
+\newcommand{\unknown}{{\constfont{unknown}}}
+%\newcommand{\kwfont}{\bf}
+%\newcommand{\used}{\mathsl{used}}
+%\newcommand{\called}{\mathsl{called}}
+%\newcommand{\rand}{\mathsl{rnd}}
+%
+%\newcommand{\ALGORITHM}{\mbox{\kwfont algorithm}\xspace}
+%\newcommand{\AND}{\mbox{\kwfont and}\xspace}
+%\newcommand{\NOT}{\mbox{\kwfont not}\xspace}
+%\newcommand{\AS}{\mbox{\kwfont as}\xspace}
+%\newcommand{\DO}{\mbox{\kwfont do}\xspace}
+%\newcommand{\IF}{\mbox{\kwfont if}\xspace}
+%\newcommand{\FI}{\mbox{\kwfont fi}\xspace}
+%\newcommand{\ELSE}{\mbox{\kwfont else}\xspace}
+%\newcommand{\ELSEIF}{\mbox{\kwfont elsif}\xspace}
+%\newcommand{\FOR}{\mbox{\kwfont for}\xspace}
+%\newcommand{\OD}{\mbox{\kwfont od}\xspace}
+%\newcommand{\OR}{\mbox{\kwfont or}\xspace}
+%\newcommand{\PARSE}{\mbox{\kwfont parse}\xspace}
+%\newcommand{\PROCEDURE}{\mbox{\kwfont proc}\xspace}
+%\newcommand{\PRIVATE}{\mbox{\kwfont private}\xspace}
+%\newcommand{\RETURN}{\mbox{\kwfont return}\xspace}
+%\newcommand{\SELECT}{\mbox{\kwfont select}\xspace}
+%\newcommand{\THEN}{\mbox{\kwfont then}\xspace}
+%\newcommand{\WHERE}{\mbox{\kwfont where}\xspace}
+%
+%\newcommand{\TO}{\mbox{\kwfont to}\xspace}
+%\newcommand{\BAD}{\mathsf{BAD}}
+%\newcommand{\GameName}[1]{\mathrm{#1}}
+%\newcommand{\Exp}{\mathbf{E}} %expectation
+%\newcommand{\Bounded}{\mathrm{KDM}}
+%\newcommand{\equal}{\mathsl{eq}}
+%\newcommand{\Bad}{\mathrm{Bad}}
+%\newcommand{\Query}{\mathrm{Query}}
+%\newcommand{\RO}{\mathrm{RO}}
+%\newcommand{\bad}{\mathsf{bad}}
+%\newcommand{\setsbad}{\mbox{ sets }\mathsf{bad}}
+%
+%\newcommand{\keys}{\mathsl{keys}}
+%\newcommand{\ptr}{\mathsl{keynum}}
+%\newcommand{\GameIndex}[1]{\mathrm{G}_{#1}}
+%\newcommand{\GameL}{\mathrm{L}}
+%\newcommand{\DKQuery}{\mathsc{Dk}}
+%\newcommand{\pos}{\mathsl{pos}}
+%%\newcommand{\type}{\mathsl{last}}
+%\newcommand{\FN}{\iftwocol \else \footnotesize\fi}
+%\newcommand{\commentchar}{\mbox{/\hspace{-0.5ex}/}}
+%%\newcommand{\comment}[1]{\commentchar\textsl{{#1}}}
+%
+%
+%
+%
+%\newcommand{\ZF}{Z_{\mathtt{F}}}
+%\newcommand{\ZD}{Z_{\mathtt{d}}}
+%\newcommand{\LF}{\lambda_{\mathtt{F}}}
+%\newcommand{\LD}{\lambda_{\mathtt{d}}}
+%\newcommand{\LX}{\lambda_{\mathtt{x}}}
+%\newcommand{\GetLen}{\mathsf{GetLen}}
+%
+%
+%
+%\newcommand{\invert}{\mathrm{Invert}}
+%
+%\newenvironment{newitemize}{%
+%\begin{list}{$\bullet$}{\labelwidth=19pt%
+%\labelsep=7pt \leftmargin=26pt \topsep=3pt%
+%\setlength{\listparindent}{\saveparindent}%
+%\setlength{\parsep}{\saveparskip}%
+%\setlength{\itemsep}{3pt} }}{\end{list}}
+%\newcommand{\sideinformation}{side-information\xspace} % or side-information
+%\newcommand{\tbl}{\mathtt{Tbl}}
+%\newcommand{\blockcipher}{blockcipher\xspace}
+%\newcommand{\blockciphers}{blockciphers\xspace}
+%\newcommand{\blockcipherbased}{blockcipher-based\xspace}
+%\newcommand{\Blockcipher}{Blockcipher\xspace}
+%\newcommand{\projective}{projective\xspace} %conventional, componentwise, bitwise, token-based, ...
+%\newcommand{\const}{\mathsf{const}}
+%\newcommand{\HMAC}{\mathrm{HMAC}}
+%\newcommand{\SHA}{\mathrm{SHA}}
+%\newcommand{\HMACSHA}{\mathrm{HMAC\mbox{-}SHA}}
+%\newcommand{\Projective}{Projective\xspace}
+%
+%
+%%KMR's notation
+%\newcommand{\KMROut}{\mathsf{GbOut}}
+%\newcommand{\KMRIn}{\mathsf{GbIn}}
+%\newcommand{\KMRCirc}{\mathsf{GbCircuit}}
+%\newcommand{\hatC}{\hat{C}}
+%\newcommand{\hatX}{\hat{X}}
+%\newcommand{\hatY}{\hat{Y}}
+%
+%%\newcommand{\scrK}{\mathscr{K}}  %security parameter
+%\newcommand{\SP}{\mathsf{K}}  %security parameter
+%\newcommand{\Cinv}{C^{-1}}
+%\newcommand{\invtopo}{M_{\mathrm{topo}}}
+%\newcommand{\invsize}{M_{\mathrm{size}}}
+%\newcommand{\Prot}{\Pi}
+%\newcommand{\OTProt}{\Prott{ot}}
+%\newcommand{\Prott}[1]{\Prot^{\mathrm{#1}}}
+%\newcommand{\OTev}{\evv{ot}}
+%\newcommand{\evv}[1]{\mathsf{ev}^{\mathrm{#1}}}
+%\newcommand{\PFEscheme}{\calF}
+%\newcommand{\OTscheme}{{\cal OT}}
+%\newcommand{\viewproc}{\mathsc{GetView}}
+%\newcommand{\View}{\mathsf{View}}
+%\newcommand{\outp}{\mathsf{Out}}
+%\newcommand{\conv}{\mathit{conv}}
+%\newcommand{\convot}{\mathit{conv}^{\mathrm{ot}}}
+%\newcommand{\viewot}{\mathit{view}^{\mathrm{ot}}}
+%\newcommand{\coinsot}{\omega_1^{\mathrm{ot}}}
+%\newcommand{\view}{\mathit{view}}
+%\newcommand{\Phiot}{\Phi_{\mathrm{ot}}}
+%
+%\newcommand{\citee}[2]{\iftwocol\cite{#2} (#1)\else\cite[#1]{#2}\fi}
+%\newcommand{\BeginFiguree}{\iftwocol\begin{figure*}\else\begin{figure}[t!]\small \fi} 
+%\newcommand{\EndFiguree}{\iftwocol\vspace{-0.1in}\end{figure*}\else\end{figure}\fi} 
+%\newcommand{\BeginFigure}{\iftwocol\begin{figure}[t!]\else\begin{figure}[t!]\small \fi} 
+%\newcommand{\EndFigure}{\iftwocol\vspace{-0.1in}\end{figure}\else\end{figure}\fi} 
+%\newcommand{\Footnote}[1]{\ifnofootnotes\else\footnote{#1}\fi}
+%
+%\iftwocol
+%\newcommand{\num}[1]{}
+%\else
+%\newcommand{\num}[1]{{#1}\>}
+%\fi
+%
+%\renewcommand{\eqref}[1]{Eq.~(\ref{#1})}
+%\newcommand{\headorsub}[1] {\iftwocol\heading{{#1}.}\else\subsection{{#1}}\fi}
+%\newcommand{\headorsubb}[1]{\iftwocol\noskipheading{{#1}.}\else\subsection{{#1}}\fi}
+%
+%
+%\newcommand{\prvpsim}{\mathrm{prv.prom}}
+%\newcommand{\prvnpsim}{\mathrm{prv.nprom}}
+%\newcommand{\obvpsim}{\mathrm{obv.prom}}
+%\newcommand{\obvnpsim}{\mathrm{obv.nprom}}
+%\newcommand{\Keys}{\mathrm{Keys}}
+%\newcommand{\calO}{{\cal O}}
+%
+%\newcommand{\calDD}{\mathscr{D}}
+%\newcommand{\calEE}{\mathscr{E}}
+%\newcommand{\calKK}{\mathscr{K}}
+%\newcommand{\clen}{\mathsl{clen}}
+%
+%\newcommand{\goodkey}{K_{\SE}}
+%\newcommand{\smashh}{}   %wasn't really working reliably; often overwrites the tilde
+%\newcommand{\tildeL}    {{\smashh{\widetilde{L}}}}
+%\newcommand{\badkey}{\tildeK}
+%\newcommand{\tildeK}    {K_{\BB}}
+%\newcommand{\tildecalK} {\bits^{\BBkl}}
+%\newcommand{\tildecalE} {\BB.\mathsf{Enc}}
+%\newcommand{\tildecalD} {\BB.\mathsf{Dec}}
+%\newcommand{\tildePi}   {\BB}
+%\newcommand{\BBExt}{\BB.\mathsf{Ext}}
+%\newcommand{\tildecalEE}{{\smashh{\widetilde{\calEE}}}}
+%\newcommand{\tildecalDD}{{\smashh{\widetilde{\calDD}}}}
+%\newcommand{\tildeC}    {{\smashh{\widetilde{C}}}}
+%
+%\newcommand{\tildeKa}    {{{\widetilde{K}}}}
+%\newcommand{\tildecalKa} {{{\widetilde{\calK}}}}
+%\newcommand{\tildecalEa} {{{\widetilde{\calE}}}}
+%\newcommand{\tildecalDa} {{{\widetilde{\calD}}}}
+%\newcommand{\tildePia}   {{{\widetilde{\Pi}}}}
+%\newcommand{\tildecalEEa}{{{\widetilde{\calEE}}}}
+%\newcommand{\tildecalDDa}{{{\widetilde{\calDD}}}}
+%\newcommand{\tildeCa}    {{{\widetilde{C}}}}
+%
+%\newcommand{\advrandom}{\adv_{\$}}
+%\newcommand{\advnonce}{\adv_{1}}
+%\newcommand{\advcounter}{\adv_{\mathtt{+}}}
+%\newcommand{\state}{\sigma}
+%
+%\newcommand{\bfM}{\boldsymbol{M}}
+%\newcommand{\bfC}{\boldsymbol{C}}
+%\newcommand{\bfA}{\boldsymbol{A}}
+%
+%\newcommand{\adv}{{\mathscr{A}}}
+%% \newcommand{\BB}{\mathscr{B}}
+%\newcommand{\BA}{\mathscr{A}}
+%\newcommand{\users}{\mathscr{D}}
+%\newcommand{\prfadv}{\mathscr{F}}
+%\newcommand{\rsadv}{\mathscr{R}}
+%\newcommand{\real}{{\mathrm{real}}}
+%\newcommand{\fake}{{\mathrm{fake}}}
+%\newcommand{\subvert}{{\mathrm{subvert}}}
+%\newcommand{\calEEreal}{{\calEE_1}}
+%\newcommand{\calEEfake}{{\calEE_0}}
+%\newcommand{\calEEsubvert}{{\calEE_0}}
+%
+%\newcommand{\gamePriv}{\mathrm{PRIV}}
+%\newcommand{\gameDetect}{\mathrm{SDET}}
+%\newcommand{\gameDetectt}{\mathrm{DET2}}
+%\newcommand{\gameSurveillance}{\mathrm{SURV}}
+%\newcommand{\gameSurveillancee}{\mathrm{SURV2}}
+%
+%\newcommand{\birep}[1]{\langle #1\rangle}
+%
+\newcommand{\gamesfontsize}{\small}
+\newcommand{\ind}{\hspace*{10pt}}
+%
+%\newcommand{\mpage}[2]{\begin{minipage}{#1\textwidth}
+%    #2 \end{minipage}}
+%
+%
+\newcommand{\oneCol}[2]{
+\begin{center}
+        \framebox{
+        \begin{tabular}{c@{\hspace*{.4em}}c}
+        \begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #2 \end{minipage}
+        \end{tabular}
+        }
+\end{center}
+}
+
+\newcommand{\oneColTwoRows}[3]{
+	\begin{center}
+		\framebox{
+			\begin{tabular}{c@{\hspace*{.4em}}c}
+				\begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #2 \end{minipage}
+				\\\hline
+				\begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #3 \end{minipage}
+			\end{tabular}
+		}
+	\end{center}
+}
+%
+%
+
+\newcommand{\twoColsNoDivide}[4]{
+\begin{center}
+        \framebox{
+        \begin{tabular}{c@{\hspace*{.4em}}c@{\hspace*{.4em}}c}
+        \begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #3 \end{minipage}
+        &
+        \begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #4 \end{minipage}
+        \end{tabular}
+        }
+\end{center}
+}
+%
+%
+\newcommand{\twoColsNoBox}[4]{
+\begin{center}
+        \begin{tabular}{c@{\hspace*{.4em}}c@{\hspace*{.4em}}c}
+        \begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #3 \end{minipage}
+        &~
+        \begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #4 \end{minipage}
+        \end{tabular}
+        
+\end{center}
+}
+
+
+\newcommand{\twoCols}[4]{
+	\begin{center}
+		\framebox{
+			\begin{tabular}{c@{\hspace*{.4em}}|c@{\hspace*{.4em}}c}
+				\begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #3 \end{minipage}
+				&~
+				\begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #4 \end{minipage}
+			\end{tabular}
+		}
+	\end{center}
+}
+%
+%\newcommand{\twoColsPics}[4]{
+%\begin{center}
+%        \begin{tabular}{c@{\hspace*{.4em}}c@{\hspace*{.4em}}c}
+%        \begin{minipage}[t][][c]{#1\textwidth}\setstretch{1.1}\gamesfontsize #3 \end{minipage}
+%        &~
+%        \begin{minipage}[t][][c]{#2\textwidth}\setstretch{1.1}\gamesfontsize #4 \end{minipage}
+%        \end{tabular}
+%\end{center}
+%}
+%
+%
+%\newcommand{\twoColsTwoRows}[6]{
+%	\begin{center}
+%		\framebox{
+%			\begin{tabular}{c@{\hspace*{.4em}}|c@{\hspace*{.4em}}c}
+%				\begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #3 \end{minipage}
+%				&
+%				\begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #4 \end{minipage}
+%				\\ \hline
+%				\begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #5
+%				\end{minipage} &
+%				\begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #6        
+%				\end{minipage}
+%			\end{tabular}
+%		}
+%	\end{center}
+%}
+%
+\newcommand{\twoColsTwoRowsNoDivide}[6]{
+\begin{center}
+        \framebox{
+        \begin{tabular}{c@{\hspace*{.4em}}c@{\hspace*{.4em}}c}
+        \begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #3 \end{minipage}
+        &
+        \begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #4 \end{minipage}
+        \\ \hline
+        \vspace{-8pt}\\
+        \begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #5
+        \end{minipage} &
+        \begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #6        
+        \end{minipage}
+        \end{tabular}
+        }
+\end{center}
+}
+
+\newcommand{\twoColsThreeRowsNoDivide}[8]{
+	\begin{center}
+		\framebox{
+			\begin{tabular}{c@{\hspace*{.4em}}c@{\hspace*{.4em}}c}
+				\begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #3 \end{minipage}
+				&
+				\begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #4 \end{minipage}
+				\\ \hline
+				\vspace{-8pt}\\
+				\begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #5
+				\end{minipage} &
+				\begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #6        
+				\end{minipage}
+				\\ \hline
+				\vspace{-8pt}\\
+				\begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #7
+				\end{minipage} &
+				\begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #8        
+				\end{minipage}
+			\end{tabular}
+		}
+	\end{center}
+}
+%
+%\newcommand{\threeCols}[6]{
+%\begin{center}
+%        \framebox{
+%        \begin{tabular}{@{\hspace{-0.2em}}c@{\hspace{0.2em}}|@{\hspace{0.2em}}c@{\hspace{0.2em}}|@{\hspace{0.2em}}c@{\hspace{0.2em}}}
+%        \begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #4
+%        \end{minipage} &
+%        \begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #5
+%        \end{minipage} &
+%        \begin{minipage}[t]{#3\textwidth}\setstretch{1.1}\gamesfontsize #6
+%        \end{minipage}
+%        \end{tabular}
+%        }
+%\end{center}
+%}
+%
+%\newcommand{\threeColstwoSplit}[6]{
+%\begin{center}
+%        \framebox{
+%        \begin{tabular}{@{\hspace{-0.2em}}c@{\hspace{0.2em}}|@{\hspace{0.2em}}c@{\hspace{0.2em}}@{\hspace{0.2em}}c@{\hspace{0.2em}}}
+%        \begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #4
+%        \end{minipage} &
+%        \begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #5
+%        \end{minipage} &
+%        \begin{minipage}[t]{#3\textwidth}\setstretch{1.1}\gamesfontsize #6
+%        \end{minipage}
+%        \end{tabular}
+%        }
+%\end{center}
+%}
+%
+%\newcommand{\threeColsnoSplit}[6]{
+%\begin{center}
+%        \framebox{
+%        \begin{tabular}{@{\hspace{-0.2em}}c@{\hspace{0.2em}}c@{\hspace{0.2em}}@{\hspace{0.2em}}c@{\hspace{0.2em}}}
+%        \begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #4
+%        \end{minipage} &
+%        \begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #5
+%        \end{minipage} &
+%        \begin{minipage}[t]{#3\textwidth}\setstretch{1.1}\gamesfontsize #6
+%        \end{minipage}
+%        \end{tabular}
+%        }
+%\end{center}
+%}
+%
+%\newcommand{\threeColstwoSplitR}[6]{
+%\begin{center}
+%        \framebox{
+%        \begin{tabular}{@{\hspace{-0.2em}}c@{\hspace{0.2em}}c@{\hspace{0.2em}}|@{\hspace{0.2em}}@{\hspace{0.2em}}c@{\hspace{0.2em}}}
+%        \begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #4
+%        \end{minipage} &
+%        \begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #5
+%        \end{minipage} &
+%        \begin{minipage}[t]{#3\textwidth}\setstretch{1.1}\gamesfontsize #6
+%        \end{minipage}
+%        \end{tabular}
+%        }
+%\end{center}
+%}
+%
+%\newcommand{\threeColstwoSplitL}[6]{
+%\begin{center}
+%        \framebox{
+%        \begin{tabular}{@{\hspace{-0.2em}}c@{\hspace{0.2em}}|@{\hspace{0.2em}}c@{\hspace{0.2em}}@{\hspace{0.2em}}c@{\hspace{0.2em}}}
+%        \begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #4
+%        \end{minipage} &
+%        \begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #5
+%        \end{minipage} &
+%        \begin{minipage}[t]{#3\textwidth}\setstretch{1.1}\gamesfontsize #6
+%        \end{minipage}
+%        \end{tabular}
+%        }
+%\end{center}
+%}
+%
+%\newcommand{\threeColsSplit}[6]{
+%\begin{center}
+%        \framebox{
+%        \begin{tabular}{@{\hspace{-0.2em}}c@{\hspace{0.2em}}||@{\hspace{0.2em}}c@{\hspace{0.2em}}|@{\hspace{0.2em}}c@{\hspace{0.2em}}}
+%        \begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #4
+%        \end{minipage} &
+%        \begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #5
+%        \end{minipage} &
+%        \begin{minipage}[t]{#3\textwidth}\setstretch{1.1}\gamesfontsize #6
+%        \end{minipage}
+%        \end{tabular}
+%        }
+%\end{center}
+%}
+%
+%\newcommand{\fourColstwoBox}[8]{
+%\begin{center}
+%        \framebox{
+%        \begin{tabular}{@{\hspace{-0.2em}}c@{\hspace{0.2em}}c@{\hspace{0.2em}}|@{\hspace{0.2em}}c@{\hspace{0.2em}}c@{\hspace{0.2em}}}
+%        \begin{minipage}[t]{#1\textwidth}\setstretch{1.1}\gamesfontsize #5
+%        \end{minipage} &
+%        \begin{minipage}[t]{#2\textwidth}\setstretch{1.1}\gamesfontsize #6
+%        \end{minipage} &
+%        \begin{minipage}[t]{#3\textwidth}\setstretch{1.1}\gamesfontsize #7
+%        \end{minipage} &
+%        \begin{minipage}[t]{#4\textwidth}\setstretch{1.1}\gamesfontsize #8
+%        \end{minipage}
+%        \end{tabular}
+%        }
+%\end{center}
+%}
+%
+\newcommand{\fourColsNoBox}[4]{
+\begin{center}\begin{tabular}{cccc}
+\begin{minipage}[t]{1in}\begin{tabbing}
+12\=12\=12\=\kill
+#1
+\end{tabbing}\end{minipage} &
+\begin{minipage}[t]{1in}\begin{tabbing}
+12\=12\=12\=\kill
+#2
+\end{tabbing}\end{minipage} &
+\begin{minipage}[t]{1in}\begin{tabbing}
+12\=12\=12\=\kill
+#3
+\end{tabbing}\end{minipage} &
+\begin{minipage}[t]{1in}\begin{tabbing}
+12\=12\=12\=\kill
+#4
+\end{tabbing}\end{minipage} 
+\end{tabular}\end{center}}
+
+\newcommand{\threeColsNoBox}[6]{
+\begin{center}\begin{tabular}{ccc}
+\begin{minipage}[t]{#1\textwidth}\begin{tabbing}
+		12\=12\=12\=\kill
+		#4
+\end{tabbing}\end{minipage} &
+\begin{minipage}[t]{#2\textwidth}\begin{tabbing}
+		12\=12\=12\=\kill
+		#5
+\end{tabbing}\end{minipage} &
+\begin{minipage}[t]{#3\textwidth}\begin{tabbing}
+		12\=12\=12\=\kill
+		#6
+\end{tabbing}\end{minipage} 
+\end{tabular}\end{center}}
+%
+%
+%\newcommand{\twoColsNoBox}[2]{
+%\begin{center}\begin{tabular}{cc}
+%\begin{minipage}[t]{1in}\begin{tabbing}
+%12\=12\=12\=\kill
+%#1
+%\end{tabbing}\end{minipage} &
+%~~\begin{minipage}[t]{1in}\begin{tabbing}
+%12\=12\=12\=\kill
+%#2
+%\end{tabbing}\end{minipage} 
+%\end{tabular}\end{center}}
+
+
+\newcommand{\twoColsNoBoxNoDivide}[4]{
+\begin{center}\begin{tabular}{c@{\hspace*{.4em}}c@{\hspace*{.4em}}c}
+\begin{minipage}[t]{#1\textwidth}\begin{tabbing}
+12\=12\=12\=\kill
+#3
+\end{tabbing}\end{minipage} & \hspace{10pt} &
+\begin{minipage}[t]{#2\textwidth}\begin{tabbing}
+12\=12\=12\=\kill
+#4
+\end{tabbing}\end{minipage} 
+\end{tabular}\end{center}}
+
+%
+%\newcommand{\rv}[1]{\mathsf{#1}}
+%
+\newcommand{\oneColNoBox}[1]{
+\begin{center}\begin{tabular}{c}
+\begin{minipage}[t]{1in}\begin{tabbing}
+12\=12\=12\=\kill
+#1
+\end{tabbing}\end{minipage} 
+\end{tabular}\end{center}}
+
+\newcommand{\gamefont}[1]{\mathrm{#1}}
+\newcommand{\procfont}[1]{\mathsc{#1}}
+%\newcommand{\Img}{\mathrm{Im}}
+%\newcommand{\SD}{\mathbf{SD}}
+%
+\newcommand{\gameG}{\gamefont{G}}
+%
+%
+%\newcommand{\SmpO}{\procfont{Smp}}
+%\newcommand{\EncOSim}{\procfont{EncSim}}
+%\newcommand{\KeyO}{\procfont{Key}}
+%\newcommand{\KeyOSim}{\procfont{KeySim}}
+%\newcommand{\LRO}{\procfont{LR}}
+%\newcommand{\LROSim}{\procfont{LRSim}}
+%\newcommand{\Fn}{\procfont{Fn}}
+%\newcommand{\RRO}{\procfont{RR}}
+%
+%
+%\newcommand{\survAdv}[2]{\Adv^{\mathrm{srv}}_{#1, #2}}
+%\newcommand{\zfunc}{\mathbf{0}}
+%\newcommand{\gp}{\mathbf{GP}}
+%\newcommand{\minentropy}{\mathbf{H}_{\infty}}
+%\newcommand{\rp}{\mathbf{RP}}
+%
+%\newcommand{\Find}{\mathrm{Find}}
+%%\newcommand{\next}{\:;\:}
+%
+%\newcommand{\prfch}{b_{\mathrm{prf}}}
+%\newcommand{\prfchp}{b_{\mathrm{prf}}'}
+%\newcommand{\sdetch}{b_{\mathrm{sdet}}}
+%\newcommand{\sdetchp}{b_{\mathrm{sdet}}'}
+%\newcommand{\distributionName}[1]{\underline{\textbf{Distribution} #1}\\[2pt]}
+%\newcommand{\indcpa}{\mathrm{indcpa}}
+%\newcommand{\indkdm}{\mathrm{indkdm}}
+%\newcommand{\tildef}{{\smashh{\widetilde{f}}}}
+%\newcommand{\kl}{\mathsf{kl}}
+%\newcommand{\rl}{\mathsf{rl}}
+%\newcommand{\bl}{\mathsf{bl}}
+%\newcommand{\Mdist}{\calM}
+%\newcommand{\gameKRec}{\mathrm{KR}}
+%\newcommand{\gameRS}{\mathrm{RS}}
+%\newcommand{\Guess}{\mathbf{Guess}}
+%
+%
+%\newcommand{\rkf}{\Pi}
+%\newcommand{\rkF}[1]{\rkf\xor #1}
+%
+%\newcommand{\encoding}[1]{\left\langle#1\right\rangle}
+%
+%\newcommand{\tagg}{\mathsf{Tag}}
+%\newcommand{\tl}{\mathsf{tl}}
+%\newcommand{\lmax}{\mathsf{max}}
+%\newcommand{\SIV}{\textrm{SIV}}
+%\newcommand{\St}{\mathrm{St}}
+%\newcommand{\ctr}{\mathrm{ctr}}
+%\newcommand{\insecH}{\epsilon_\Hash}
+%
+%%gameStuff
+\newcommand{\proc}[1]{\underline{\textbf{Procedure} #1}\\[2pt]}
+\newcommand{\alg}[1]{\underline{\textbf{Alg} #1}\\[2pt]}
+\newcommand{\proto}[1]{\underline{\textbf{Protocol} #1}\\[2pt]}
+\newcommand{\algs}[1]{\underline{\textbf{Algs} #1}\\[2pt]}
+\newcommand{\TwoLineAlgs}[2]{\begin{tabular}{ll}
+		\multirow{2}{*}{\textbf{Algs}} & #1 \\
+		& #2 \\
+		\hline
+\end{tabular}\\[2pt]}
+
+
+%\newcommand{\TwoLineAlgs}[2]{\underline{\textbf{Algs} #1}\\\ind\ind~~\underline{#2}\\[2pt]}
+\newcommand{\subroutine}[1]{\underline{\textbf{Subroutine} #1}\\[2pt]}
+\newcommand{\advName}[1]{\underline{\textbf{Adversary} #1}\\[2pt]}
+\newcommand{\gameName}[1]{\underline{\textbf{Game} #1}\\[2pt]}
+\newcommand{\gameNames}[1]{\underline{\textbf{Games} #1}\\[2pt]}
+%\newcommand{\gameSpace}{\hfill\\[2pt]}
+%
+%
+%\newcommand{\init}[1]{\proc{Initialize(#1)}}
+%\newcommand{\finalize}[1]{\proc{Finalize(#1)}}
+%
+%%Security Game Names
+%\newcommand{\gameAEF}{\GameName{AE5}}
+%\newcommand{\gameRKAEF}{\GameName{RK\text{-}AE5}}
+%\newcommand{\gamePRF}{\GameName{PRF}}
+%\newcommand{\gameINDRCPARK}{\GameName{RK\text{-}IND\$}}
+%\newcommand{\gameINDRCPA}{\GameName{IND\$}}
+%\newcommand{\gameINDR}{\GameName{IND\$}}
+%\newcommand{\gameAU}{\GameName{AU}}
+%\newcommand{\gameREAL}{\GameName{REAL}}
+%\newcommand{\gameRAND}{\GameName{RAND}}
+%\newcommand{\gameLOSSY}{\GameName{LOSSY}}
+%\newcommand{\gameDLOG}{\GameName{DLOG}}
+%\newcommand{\gameDH}{\GameName{DH}}
+%\newcommand{\gameDETDH}{\GameName{DETDH}}
+%\newcommand{\gameSURV}{\GameName{SURV}}
+%\newcommand{\gameDETECT}{\GameName{DETECT}}
+%
+%%Primitives
+%%\newcommand{\SE}{\mathsf{AE}}
+%%\newcommand{\SEKey}{K_{\SE}}
+%%\newcommand{\SEkl}{\SE.\mathsf{kl}}
+%%\newcommand{\SEcl}{\SE.\mathsf{cl}}
+%%\newcommand{\SEtl}{\SE.\mathsf{tl}}
+%%\newcommand{\SEnl}{\SE.\mathsf{nl}}
+%%\newcommand{\SEsl}{\SE.\mathsf{sl}}
+%%\newcommand{\SEKg}{\SE.\mathsf{Kg}}
+%%\newcommand{\SEEnc}{\SE.\mathsf{Enc}}
+%%\newcommand{\SEDec}{\SE.\mathsf{Dec}}
+%%\newcommand{\AEEnc}{\SE.\mathsf{Enc}}
+%%\newcommand{\AEDec}{\SE.\mathsf{Dec}}
+%%\newcommand{\SECon}{\SE.\mathsf{Con}}
+%
+%\newcommand{\ELF}{\mathsf{ELF}}
+%\newcommand{\ELFGen}{\ELF.\mathsf{Gen}}
+%\newcommand{\ELFEv}{\ELF.\mathsf{Ev}}
+%\newcommand{\ek}{ek}
+%\newcommand{\EGen}{\mathtt{ELF}.\mathsf{Gen}}
+%
+%\newcommand{\E}{\mathsf{E}}
+%\newcommand{\EKey}{K_{\E}}
+%\newcommand{\EEnc}{\E.\mathsf{Enc}}
+%\newcommand{\EDec}{\E.\mathsf{Dec}}
+%\newcommand{\Enl}{\E.\mathsf{nl}}
+%\newcommand{\ECon}{\E.\mathsf{Con}}
+%
+%\newcommand{\J}{\mathrm{J}}
+%\newcommand{\Jnl}{\J.\mathsf{nl}}
+%\newcommand{\JKey}{K_{\J}}
+%\newcommand{\JKg}{\J.\mathsf{Kg}}
+%\newcommand{\JEnc}{\J.\mathsf{Enc}}
+%\newcommand{\JDec}{\J.\mathsf{Dec}}
+%\newcommand{\JRd}{\J.\mathsf{Rd}}
+%
+%\newcommand{\PRF}{\mathsf{F}}
+%\newcommand{\F}{\mathsf{F}}
+%\newcommand{\Fkl}{\F.\mathsf{kl}}
+%\newcommand{\Fnl}{\F.\mathsf{nl}}
+%\newcommand{\FKey}{K_{\F}}
+%\newcommand{\FKg}{\PRF.\mathsf{Kg}}
+%\newcommand{\FEv}{\PRF.\mathsf{Ev}}
+%\newcommand{\FRd}{\PRF.\mathsf{Rd}}
+%\newcommand{\FDom}{\PRF.\mathsf{D}}
+%\newcommand{\FRange}{\PRF.\mathsf{R}}
+%\newcommand{\FCon}{\PRF.\mathsf{Con}}
+%\newcommand{\fkey}{fk}
+%
+%\newcommand{\Hash}{\mathsf{H}}
+%\newcommand{\Hol}{\Hash.\mathsf{ol}}
+%\newcommand{\Hkl}{\Hash.\mathsf{kl}}
+%\newcommand{\HKey}{K_{\Hash}}
+%\newcommand{\HKg}{\Hash.\mathsf{Kg}}
+%\newcommand{\HEv}{\Hash.\mathsf{Ev}}
+%\newcommand{\HDom}{\Hash.\mathsf{D}}
+%\newcommand{\HRange}{\Hash.\mathsf{R}}
+%
+%\newcommand{\DS}{\mathsf{DS}}
+%\newcommand{\DSCon}{\DS.\mathsf{Con}}
+%\newcommand{\DSVf}{\DS.\mathsf{Vf}}
+%\newcommand{\DSSig}{\DS.\mathsf{Sig}}
+%
+%%Advantages
+%\newcommand{\elf}{{\mathrm{elf}}}
+%\newcommand{\AdvELF}[2]{\Adv^{\elf}_{#1}(#2)}
+%
+%%Oracles
+\newcommand{\EncO}{\procfont{Enc}}
+\newcommand{\DecO}{\procfont{Dec}}
+\newcommand{\FnO}{\procfont{Fn}}
+%\newcommand{\EncSim}{\procfont{EncSim}}
+%\newcommand{\DecSim}{\procfont{DecSim}}
+%\newcommand{\FnSim}{\procfont{FnSim}}
+%\newcommand{\EvO}{\procfont{Ev}}
+%
+%%Adversaries
+%\newcommand{\advA}{\mathcal{A}}
+%\newcommand{\advASE}{\advA_{\SE}}
+%\newcommand{\advB}{\mathcal{B}}
+%\newcommand{\advC}{\mathcal{C}}
+%
+%%Proof Games
+%\newcommand{\Gm}{\GameName{G}}
+%\newcommand{\GmA}{\GameName{A}}
+%\newcommand{\GmB}{\GameName{B}}
+%\newcommand{\GmH}{\GameName{H}}
+%\newcommand{\GmI}{\GameName{I}}
+%
+%%Databases
+%\newcommand{\DB}{\mathsf{DB}}
+%\newcommand{\DBCol}{\mathsf{DB.columns}}
+%\newcommand{\DBInd}{\mathsf{DB.indices}}
+%\newcommand{\DBData}{\mathsf{DB.data}}
+%\newcommand{\DBPLookup}{\mathsf{DB.PageLookup}}
+%\newcommand{\DBLookup}{\mathsf{DB.Lookup}}
+%\newcommand{\DBGetP}{\mathsf{DB.GetPage}}
+%\newcommand{\DBRPLookup}{\mathsf{DB.RangePageLookup}}
+%\newcommand{\DBRLookup}{\mathsf{DB.RangeLookup}}
+%\newcommand{\Null}{\mathtt{null}}
+%
+%\newcommand{\negl}{\mathbf{negl}}
+\let\argmax\relax
+\DeclareMathOperator*{\argmax}{arg\,max}
+\let\argmin\relax
+\DeclareMathOperator*{\argmin}{arg\,min}
+%
+%
+%\newcommand{\aes}{\mathsf{AES}}
+%\newcommand{\Tag}{\mathsf{T}}
+%\newcommand{\Vf}{\mathsf{Vf}}
+%
+%\newcommand{\dict}{\mathsf{D}}
+%\newcommand{\dictGet}{\dict\mathsf{.Get}}
+%\newcommand{\dictInsert}{\dict\mathsf{.Insert}}
+%\newcommand{\dictCreate}{\dict\mathsf{.Create}}
+%\newcommand{\dictKWs}{\dict\mathsf{.KW}}
+%\newcommand{\dictIDs}{\dict\mathsf{.ID}}
+%
+%\newcommand{\underscore}{\hspace{1pt}\underline{\hspace{5pt}}\hspace{1pt}}
+%\newcommand{\tCOL}{\mathbf{3COL}}
+%
+%%\newcommand{\twoCols}[4]{
+%%	\begin{center}
+%%		\framebox{
+%%			\begin{tabular}{c@{\hspace*{.4em}}|c@{\hspace*{.4em}}c}
+%%				\begin{minipage}[t]{#1\diagwidth}\setstretch{1.1}\gamesfontsize #3 \end{minipage}
+%%				&
+%%				\begin{minipage}[t]{#2\diagwidth}\setstretch{1.1}\gamesfontsize #4 \end{minipage}
+%%			\end{tabular}
+%%		}
+%%	\end{center}
+%%}
+%%
+%%\newcommand{\oneCol}[2]{
+%%	\begin{center}
+%%		\framebox{
+%%			\begin{tabular}{c@{\hspace*{.4em}}}
+%%				\begin{minipage}[t]{#1\diagwidth}\setstretch{1}\gamesfontsize #2 \end{minipage}
+%%			\end{tabular}
+%%		}
+%%	\end{center}
+%%}
