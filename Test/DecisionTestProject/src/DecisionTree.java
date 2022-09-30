@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class DecisionTree {
     public double calculateInformationGain(DataFrame dataFrame, String label){
@@ -11,22 +12,20 @@ public class DecisionTree {
             classHashTable.put(i, classHashTable.get(i) + 1);
         double informationGain = dataFrame.getTargetEntropy();
         for(Map.Entry<String, Integer> i: classHashTable.entrySet())
-            informationGain -= ((double) i.getValue())/dataFrame.getSampleCount() * calculateEntropy(dataFrame, label, i.getKey());
+            informationGain -= ((double) i.getValue())/dataFrame.getSampleCount() * calculateEntropy(dataFrame, label);
         return informationGain;
     }
-    public double calculateEntropy(DataFrame dataFrame, String label, String attr){
-        HashMap<String, Integer> hashTable = getEmptyHash(dataFrame.getTargetData());
-        int dataColumn = dataFrame.getColumnFromLabel(label);
-        int count = 0;
-        for(int i = 0; i < dataFrame.getSampleCount(); ++i) {
-            if (dataFrame.getData()[dataColumn][i].equals(attr)) {
-                hashTable.put(dataFrame.getTargetData()[i], hashTable.get(dataFrame.getTargetData()[i]) + 1);
-                count++;
-            }
-        }
+    public double calculateEntropy(String[] targetData)
+    {
+        HashMap<String, Integer> hashTable = getEmptyHash(targetData);
+        final int count = targetData.length;
+
+        for(int i = 0; i < count; i++)
+            hashTable.put(targetData[i], hashTable.get(targetData[i]) + 1);
 
         double entropy = 0;
-        for(Map.Entry<String, Integer> i: hashTable.entrySet()){
+        final Set<Map.Entry<String, Integer> > entrySet = hashTable.entrySet();
+        for(Map.Entry<String, Integer> i: entrySet){
             if(i.getValue() != 0) {
                 double prob = ((double) i.getValue()) / count;
                 entropy -= prob * Math.log(prob) / Math.log(2);
