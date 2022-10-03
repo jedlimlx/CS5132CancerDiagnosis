@@ -84,7 +84,7 @@ fun App() {
 }
 
 fun main() {
-    Bcancer.main(Array(0) { "" })
+    Main.main(arrayOf(""))
     // return application {
     //    Window(title="Breast Cancer Diagnosis", onCloseRequest = ::exitApplication) {
     //        App()
