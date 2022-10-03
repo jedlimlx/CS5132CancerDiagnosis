@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 public class DecisionTree {
     public int max_depth;
     public int min_samples_split;
-    public Node<Integer> root;
+    public TreeNode<Integer> root;
     public int n_class_labels;
     public int n_samples;
     public int n_features;
@@ -91,7 +91,7 @@ public class DecisionTree {
         return new Pair<>(splitFeat, splitThresh);
     }
 
-    private Node<Integer> build_tree(double[][] X, int[] y, int depth) {
+    private TreeNode<Integer> build_tree(double[][] X, int[] y, int depth) {
         this.n_samples = X.length;
         if (X.length > 0) this.n_features = X[0].length;
         else this.n_features = 0;
@@ -100,7 +100,7 @@ public class DecisionTree {
         // stopping criteria
         if (isFinished(depth)) {
             int most_common_Label = Helper.getIndexOfMax(Helper.bincount(y));
-            return new Node<Integer>(most_common_Label);
+            return new TreeNode<Integer>(most_common_Label);
         }
 
         // get best split
@@ -113,15 +113,15 @@ public class DecisionTree {
         Pair<int[], int[]> bestSplitPair = create_split(Helper.getColumn(X, best_feat), best_thresh);
         int[] left_idx = bestSplitPair.getA();
         int[] right_idx = bestSplitPair.getB();
-        Node<Integer> left_child = build_tree(Helper.getArrayFromIndices(X, left_idx), Helper.getArrayFromIndices(y, left_idx), depth+1);
-        Node<Integer> right_child = build_tree(Helper.getArrayFromIndices(X, right_idx), Helper.getArrayFromIndices(y, right_idx), depth+1);
-        return new Node<>(best_feat, best_thresh, left_child, right_child);
+        TreeNode<Integer> left_child = build_tree(Helper.getArrayFromIndices(X, left_idx), Helper.getArrayFromIndices(y, left_idx), depth+1);
+        TreeNode<Integer> right_child = build_tree(Helper.getArrayFromIndices(X, right_idx), Helper.getArrayFromIndices(y, right_idx), depth+1);
+        return new TreeNode<>(best_feat, best_thresh, left_child, right_child);
     }
-    private Node<Integer> build_tree(double[][] X, int[] y) {
+    private TreeNode<Integer> build_tree(double[][] X, int[] y) {
         return build_tree(X, y, 0);
     }
 
-    private Integer traverse_tree(double[] x, Node<Integer> node) {
+    private Integer traverse_tree(double[] x, TreeNode<Integer> node) {
         if (node.is_leaf()) {
             return node.getItem();
         }
