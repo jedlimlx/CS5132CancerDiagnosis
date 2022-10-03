@@ -62,7 +62,7 @@ On the other hand, a fuzzy decision tree makes use of fuzzy logic, where the tru
 \fi
 
 \section{Decision Tree}
-To solve this problem, we will make use of a decision tree. In particular, we will use the Iterative Dichotomiser 3 (ID3) algorithm. \\
+To solve this problem, we will make use of a decision tree. \\
 
 \heading{Entropy} A decision tree essentially asks certain questions at the right times, in order to determine which class the input belongs to. To do this, a value known as the entropy with the following formula is used.
 
@@ -76,55 +76,82 @@ $$IG = 1 - E$$
 
 The feature that results in the greatest information gain will be selected for that branch of the tree. For continuous features, a threshold will be chosen based on what threshold will result in the greatest information gain. \\
 
-Finally, we need to explain when the decision tree will decide when it should stop splitting. It will do this when the set is sufficiently pure (i.e. the entropy $E < E_C$ where $E_C$ is some critical value of entropy) or when a maximum depth $d_{max}$ has been reached. \\
+Finally, we need to explain when the decision tree will decide when it should stop splitting. It will do this when a maximum depth $d$ has been reached or when there a fewer than $s$ samples remaining to split. \\
 
 \heading{Pseudocode} With this, we can now construct our decision tree. The pseudocode for construction and inference can be found below. 
 
 \begin{itemize}
-	\item \textbf{S} is the training data with $m$ classes and $n$ discrete features. It is defined as $\{\textbf{S} : \textbf{S} = {((f_1,f_2,\dots,f_n),c),f_i\in[1,\sf{len}(f_i)],c\in [1,m]}\}$\\
-	\item $\sf{len}(f_i)$ refers to the number of values that the discrete feature can take on.\\
-	\item We also define the node object $\textbf{N}$. It has a children attribute $N.\sf{children}$ which is a list of $\eta$ child nodes $\{\textbf{N}_1,\dots,\textbf{N}_\eta\}$. Furthermore, it also stores a function $func((f_1,f_2,\dots,f_n))$ which takes in a list of features and outputs an integer $i\in[1,\eta]$.
-	
+	\item \textbf{S} is the training data with $m$ classes and $n$ continuous features. It is a set and all \textbf{S} are within $\{\textbf{S} : \textbf{S} = {((f_1,\dots,f_n),c),f_i\in\mathbb{R},c\in [1,m]}\}$\\
+	\item $d$ is the maximum depth that the tree can reach and $s$ the minimum size of the data before we stop branching the tree.\\
+	\item We also define the node object $\textbf{N}$. It has a children attribute $N.\sf{children}$ which is a list of $\eta$ child nodes $\{\textbf{N}_1,\dots,\textbf{N}_\eta\}$. Furthermore, it also stores a function $\textbf{N}.\sf{func}(\mathnormal{(f_1,f_2,\dots,f_n)})$ which takes in a list of features and outputs an integer $i\in[1,\eta]$. The depth of the node in the tree is also stored in $\textbf{N}.\sf{depth}$\\
 \end{itemize}
+
 
 \begin{figure}[h]
 	\oneCol{.9}{
-		\alg{$\sf{BuildTree}(\bf{S}, d)$}
+		\alg{$\sf{CalculateEntropy}(\bf{S}, t)$}
+		$I\gets0$\\
+		$\textbf{S}_1\gets\{((f_1,\dots,f_n),c) : f_i<t, ((f_1,\dots,f_n),c)\in \textbf{S}\}$\\
+		$\textbf{S}_2\gets\{((f_1,\dots,f_n),c) : f_i>t, ((f_1,\dots,f_n),c)\in \textbf{S}\}$\\
+		$\textbf{C}_1\gets\{c : ((f_1,\dots,f_n),c)\in \textbf{S}_1\}$\\
+		$\textbf{C}_2\gets\{c : ((f_1,\dots,f_n),c)\in \textbf{S}_2\}$\\
+		$I\gets1-\frac{|\textbf{C}_1|\times E(\textbf{C}_1)+|\textbf{C}_2|\times E(\textbf{C}_2)}{|\textbf{S}|}$\\
+		Return $\textbf{S}_1,\textbf{S}_2,I$\\
+		
+		\alg{$\sf{BuildTree}(\bf{S}, \mathnormal{d, s})$}
 		Initialise new node $\textbf{N}$\\
-		Initialise empty stack $\bf{L}$\\
+		Initialise empty queue $\bf{L}$\\
 		$\textbf{L}.\sf{push}((\textbf{S},\textbf{N}))$\\
 		While $\textbf{L}.\sf{size}\neq0$ do\\
 		\ind $\textbf{S}, \textbf{N}\gets \textbf{L}.\sf{pop}()$ \\
-		\ind If $\textbf{N}.\sf{depth} > d$ then break \\
-		\ind $E_{min}\gets\infty$ \\
+		\ind If $\textbf{N}.\sf{depth} > \mathnormal{d}$ or $|\textbf{S}|<s$ then break \\
+		\ind $I_{max}\gets0$ \\
 		\ind For $i\in1\dots n$ do \\
 		\ind \ind $E\gets 0$ \\
-		\ind \ind For $j\in1\dots\sf{len}(f_i)$ do \\
-		\ind \ind \ind $\textbf{S}_{new}\gets\{((f_1,f_2,\dots,f_n),c) : f_i=j, ((f_1,f_2,\dots,f_n),c)\in \textbf{S}\}$ \\
-		\ind \ind \ind Calculate entropy $E'$ from $\textbf{S}_{new}$ \\
-		\ind \ind \ind $E\gets E+E'$ \\
-		\ind \ind If $E_{min} > E$ then \\
-		\ind \ind \ind $E_{min}\gets E$ \\
-		\ind \ind \ind $i_{min}\gets i$ \\
-		\ind \ind \ind $\textbf{S}_{min}\gets \textbf{S}_{new}$ \\
+		\ind \ind For $t\in \{f_i : ((f_1,\dots,f_n),c)\in \textbf{S}_1\}$ do \\
+		%\ind \ind \ind $\textbf{S}_{less}\gets\{((f_1,f_2,\dots,f_n),c) : f_i<t, ((f_1,f_2,\dots,f_n),c)\in \textbf{S}\}$ \\
+		%\ind \ind \ind $\textbf{S}_{more}\gets\{((f_1,f_2,\dots,f_n),c) : f_i>t, ((f_1,f_2,\dots,f_n),c)\in \textbf{S}\}$ \\
+		\ind \ind \ind $\textbf{S}_1,\textbf{S}_2,I\gets\sf{CalculateEntropy}\mathnormal{(\textbf{S}, t)}$ \\
+		\ind \ind \ind If $I_{max} < I$ then \\
+		\ind \ind \ind \ind $I_{max}\gets I; i_{max}\gets i; t_{max}\gets t$ \\
+		\ind \ind \ind \ind $\textbf{S}_3\gets \textbf{S}_1; \textbf{S}_4\gets \textbf{S}_2$ \\
 		\ind \ind \color{gray}{End if} \\
 		\ind \color{gray}{End for} \\
 		\color{black}
-		\ind For $j\in1\dots\sf{len}(f_i)$ do \\
-		\ind \ind Initialise new node \textbf{M} \\
-		\ind \ind $\textbf{N}.\sf{children}[i_{min}]\gets \textbf{M}$ \\
-		\ind \ind $\textbf{L}.\sf{push}((\textbf{S}_{min},\textbf{M}))$\\
+		\ind Initialise new nodes $\textbf{M}_l, \textbf{M}_r$ \\
+		\ind $\textbf{M}_l.\sf{\textbf{p}}=\mathnormal{\frac{|\{c : c == 1,((f_1,\dots,f_n),c)\in \textbf{S}_1\}|}{|\textbf{S}_1|}}$\\
+		\ind $\textbf{M}_r.\sf{\textbf{p}}=\mathnormal{\frac{|\{c : c == 1,((f_1,\dots,f_n),c)\in \textbf{S}_2\}|}{|\textbf{S}_2|}}$\\
+		\ind $\textbf{N}.\sf{func}\gets\mathnormal{((f_1,\dots,f_n)}\mapsto \sf{If}\;\mathnormal{f_{i_{max}}<t_{max}}\;0\;\sf{then}\;1)$\\
+		\ind $\textbf{N}.\sf{children}[0]\gets\mathnormal{\textbf{M}_l}$ \\
+		\ind $\textbf{N}.\sf{children}[1]\gets\mathnormal{\textbf{M}_r}$ \\
+		\ind $\textbf{L}.\sf{push}\mathnormal{((\textbf{S}_3,\textbf{M}_l))}$\\
+		\ind $\textbf{L}.\sf{push}\mathnormal{((\textbf{S}_4,\textbf{M}_r))}$\\
 		\ind \color{gray}{End for} \\
 		\color{gray}{End while}\\
 		\color{black}Return $\textbf{N}$\\ \\
-		\alg{$\sf{Qry({f_1,\dots,f_n},\textbf{N})}$}
 		
+		\alg{$\sf{Qry({f_1,\dots,f_n},\textbf{N})}$}
+		$i\gets\textbf{N}.\sf{func}({f_1,\dots,f_n})$\\
+		If $\textbf{N}.\sf{children}[i]=\bot$ then\\
+		\ind Return $\textbf{N}.\textbf{p}$ \\
+		Else \\
+		\ind Return $\textbf{N}.\sf{children}[i]$\\
 	}
 	\vspace{-.5cm}
 	\caption{Pseudocode for construction and inference of the tree.}
 	\label{fig-rh}
 	\vspace{-.5cm}
 \end{figure}
+
+\heading{Time Complexity} Now, let us analyse the time and space complexity of our algorithm. 
+
+\begin{itemize}
+	\item Let us assume that the tree will be fully filled with height $d$. This means that there will be $2^{d+1}-1$ nodes in the tree. This means the split would have been done $2^{d}-1$ times. In practice, this may not be true but let's assume so for the sake of simplicity.
+	\item Splitting the tree has a time-complexity of $O(\mu\times|\textbf{S}|)$ where $|\textbf{S}|$ is the length of the data that still remains at that node and 
+	$$\mu=\sum_{i=0}^{n}f_i\times|\{f_i : ((f_1,\dots,f_n),c)\in \textbf{S}_1\}|$$
+	\item It should be reasonable to assume that on average each split $|\textbf{S}_{new}|=\frac{|\textbf{S}|}{2}$. Then, at depth $x$, the size of the dataset will be $|\textbf{S}_x|=\frac{|\textbf{S}|}{2^x}$ Then, the total average time-complexity is 
+	$$O(\sum_{i=0}^{d}2^i\times \mu\times |\textbf{S}_i|)=O(\sum_{i=0}^{d}\mu\times |\textbf{S}|)=O(\mu\times |\textbf{S}|)$$
+\end{itemize}
 
 \section{Random Forest}
 To improve the performance of our classifier, we make use of many different decision tree classifiers in an ensemble. \\
