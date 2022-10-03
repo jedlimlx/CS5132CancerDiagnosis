@@ -29,7 +29,7 @@ The features describe 10 characteristics of the cell nuclei present in the image
 	\item The texture of the cell nucleus
 \end{itemize}
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.45\linewidth]{screenshot001}
 	\hspace{0.5cm}
@@ -37,6 +37,8 @@ The features describe 10 characteristics of the cell nuclei present in the image
 	\caption{A picture of breast cells. The cells on the left are begin while the cells on the right are cancerous.}
 	\label{fig:images}
 \end{figure}
+
+\newpage
 
 The mean, standard error and worst (mean of the three largest values) of these features are computed for each image, resulting in 30 features in the UCI dataset. \\
 
@@ -63,6 +65,8 @@ On the other hand, a fuzzy decision tree makes use of fuzzy logic, where the tru
 
 \section{Decision Tree}
 To solve this problem, we will make use of a decision tree. \\
+
+\input{fig/decision_tree}
 
 \heading{Entropy} A decision tree essentially asks certain questions at the right times, in order to determine which class the input belongs to. To do this, a value known as the entropy with the following formula is used.
 
@@ -155,3 +159,5 @@ Finally, we need to explain when the decision tree will decide when it should st
 
 \section{Random Forest}
 To improve the performance of our classifier, we make use of many different decision tree classifiers in an ensemble. \\
+
+\input{fig/random_forest}
