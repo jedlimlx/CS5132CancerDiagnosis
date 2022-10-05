@@ -12,7 +12,7 @@ public class Main {
             return;
         }
 
-        DecisionTree clf = new DecisionTree(10);
+        DecisionTree clf = new DecisionTree(100);
         clf.fit(results.X_train, results.y_train);
 
         int[] y_pred = clf.predict(results.X_test);
