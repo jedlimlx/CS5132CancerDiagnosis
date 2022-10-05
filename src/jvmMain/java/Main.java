@@ -18,5 +18,10 @@ public class Main {
         int[] y_pred = clf.predict(results.X_test);
 
         System.out.println("Accuracy: " + Helper.accuracy_score(results.y_test, y_pred));
+
+        RandomForestClassifier rClf = new RandomForestClassifier();
+        rClf.fit(results.X_train, results.y_train);
+
+
     }
 }

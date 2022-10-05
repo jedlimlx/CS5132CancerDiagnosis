@@ -3,17 +3,17 @@ import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
 public class DecisionTree {
-    public int max_depth;
-    public int min_samples_split;
+    public int maxDepth;
+    public int minSamplesSplit;
     public TreeNode<Integer> root;
-    public int n_class_labels;
-    public int n_samples;
-    public int n_features;
+    public int nClassLabels;
+    public int nSamples;
+    public int nFeatures;
 
     // constructors
     public DecisionTree(int max_depth, int min_samples_split) {
-        this.max_depth = max_depth;
-        this.min_samples_split = min_samples_split;
+        this.maxDepth = max_depth;
+        this.minSamplesSplit = min_samples_split;
         this.root = null;
     }
     public DecisionTree(int max_depth) {
@@ -25,7 +25,7 @@ public class DecisionTree {
 
     // private methods
     private boolean isFinished(int depth) {
-        return depth >= this.max_depth || this.n_class_labels == 1 || this.n_samples < this.min_samples_split;
+        return depth >= this.maxDepth || this.nClassLabels == 1 || this.nSamples < this.minSamplesSplit;
     }
     private double entropy(int[] y) {
         double[] proportions = Helper.divideArray(Helper.bincount(y), y.length);
@@ -92,10 +92,10 @@ public class DecisionTree {
     }
 
     private TreeNode<Integer> build_tree(double[][] X, int[] y, int depth) {
-        this.n_samples = X.length;
-        if (X.length > 0) this.n_features = X[0].length;
-        else this.n_features = 0;
-        this.n_class_labels = IntStream.of(y).distinct().sorted().toArray().length;
+        this.nSamples = X.length;
+        if (X.length > 0) this.nFeatures = X[0].length;
+        else this.nFeatures = 0;
+        this.nClassLabels = IntStream.of(y).distinct().sorted().toArray().length;
 
         // stopping criteria
         if (isFinished(depth)) {
@@ -104,7 +104,7 @@ public class DecisionTree {
         }
 
         // get best split
-        int[] rnd_feats = Helper.randomNumbersNoRepeat(n_features).stream().mapToInt(i->i).toArray();
+        int[] rnd_feats = Helper.randomNumbersNoRepeat(nFeatures).stream().mapToInt(i->i).toArray();
         Pair<Integer, Double> bestSplit = best_split(X, y, rnd_feats);
         int best_feat = bestSplit.getA();
         double best_thresh = bestSplit.getB();
