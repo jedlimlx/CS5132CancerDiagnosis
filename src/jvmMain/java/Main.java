@@ -21,7 +21,8 @@ public class Main {
 
         RandomForestClassifier rClf = new RandomForestClassifier();
         rClf.fit(results.X_train, results.y_train);
-
-
+        System.out.println("fit done");
+        y_pred = rClf.predict(results.X_test);
+        System.out.println("Accuracy: " + Helper.accuracy_score(results.y_test, y_pred));
     }
 }
