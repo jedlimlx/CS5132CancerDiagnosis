@@ -14,15 +14,13 @@ public class Main {
 
         DecisionTree clf = new DecisionTree(100);
         clf.fit(results.X_train, results.y_train);
-
         int[] y_pred = clf.predict(results.X_test);
-
-        System.out.println("Accuracy: " + Helper.accuracy_score(results.y_test, y_pred));
+        System.out.println("Decision Tree Accuracy: " + Helper.accuracy_score(results.y_test, y_pred));
 
         RandomForestClassifier rClf = new RandomForestClassifier();
         rClf.fit(results.X_train, results.y_train);
         System.out.println("fit done");
         y_pred = rClf.predict(results.X_test);
-        System.out.println("Accuracy: " + Helper.accuracy_score(results.y_test, y_pred));
+        System.out.println("Random Forest Classifier Accuracy: " + Helper.accuracy_score(results.y_test, y_pred));
     }
 }

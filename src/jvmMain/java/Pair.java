@@ -1,6 +1,6 @@
 public class Pair<A, B> {
-    A a;
-    B b;
+    private A a;
+    private B b;
 
     public Pair(A a, B b) {
         this.a = a;

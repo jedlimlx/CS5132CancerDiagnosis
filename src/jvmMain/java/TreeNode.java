@@ -62,25 +62,4 @@ public class TreeNode<T> extends Node<T> {
     {
         return getItem() != null;
     }
-
-    public String toString()
-    {
-        String line1 = "Item is: " + getItem();
-        String line2 = "Feature is: " + getFeature();
-        String line3 = "Threshhold is: " + getThreshhold();
-
-        String line4LeftHalf, line4RightHalf;
-        if(getLeft() != null)
-            line4LeftHalf = "Left is not null";
-        else
-            line4LeftHalf = "Left is null";
-
-        if(getRight() != null)
-            line4RightHalf = "Right is not null";
-        else
-            line4RightHalf = "Right is null";
-
-        String line4 = line4LeftHalf + ", " + line4RightHalf;
-        return line1 + "\n" + line2 + "\n" + line3 + "\n" + line4;
-    }
 }
