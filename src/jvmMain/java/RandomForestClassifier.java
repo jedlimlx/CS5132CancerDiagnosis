@@ -29,7 +29,7 @@ public class RandomForestClassifier {
         }
     }
 
-    public int[] predict(double X[][]){
+    public int[] predict(double[][] X){
         int[] tempPredictions = new int[X.length];
         double[] averagedPredictions = new double[X.length];
         for (int i = 0; i < X.length; ++i)

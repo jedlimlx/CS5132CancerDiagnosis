@@ -7,17 +7,19 @@ public class CSVReader {
     public String[] colsToSkip;
     public double[][] X;
     public int[] y;
-
+    private InputStream stream;
     private int targetIdx;
     private ArrayList<Integer> skipColsIdx;
 
-    public CSVReader(String targetColName, String[] colsToSkip) {
+    public CSVReader(String targetColName, String[] colsToSkip, InputStream stream) {
         this.targetColName = targetColName;
         this.colsToSkip = colsToSkip;
         targetIdx = -1;
         skipColsIdx = new ArrayList<>();
         y = null;
         X = null;
+
+        this.stream = stream;
     }
 
     public Pair<double[][], int[]> readCsvToXy()
@@ -27,7 +29,7 @@ public class CSVReader {
         ArrayList<String> y_list = new ArrayList<>();
 
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(Main.class.getResource("data.csv").openStream()));
+            BufferedReader br = new BufferedReader(new InputStreamReader(this.stream));
 
             // read headings
             String firstLine = br.readLine().replaceAll("\"", "");
@@ -38,11 +40,14 @@ public class CSVReader {
             String[] headings = firstLine.split(",");
 
             // find the columns to skip and the target column indices
-            targetIdx = Arrays.asList(headings).indexOf(targetColName);
-            if (targetIdx == -1) {
-                System.out.println("Error: Target column is not found");
-                return null;
-            }
+            if (targetColName != null) {
+                targetIdx = Arrays.asList(headings).indexOf(targetColName);
+                if (targetIdx == -1) {
+                    System.out.println("Error: Target column is not found");
+                    return null;
+                }
+            } else targetIdx = -1;
+
             for (String colName : colsToSkip) {
                 int skipIdx = Arrays.asList(headings).indexOf(colName);
                 if (skipIdx == -1) {
@@ -90,7 +95,7 @@ public class CSVReader {
             }
 
         } catch (FileNotFoundException e) {
-            System.out.println("File No Found");
+            System.out.println("File Not Found");
             e.printStackTrace();
         } catch (IOException e) {
             System.out.println("IO Exception");

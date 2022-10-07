@@ -10,6 +10,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import java.awt.FileDialog
+import java.io.File
+import java.io.FileInputStream
+import java.io.IOException
 
 @Composable
 @Preview
@@ -28,14 +31,14 @@ fun App(tree: RandomForestClassifier) {
         Row(modifier = Modifier.padding(10.dp)) {
             Column(modifier = Modifier.padding(10.dp)) {
                 OutlinedTextField(
-                    label = { Text("Enter Mean Perimeter of Nucleus") },
+                    label = { Text("Enter Worst Perimeter of Nucleus") },
                     value = perimeter.value,
                     onValueChange = { perimeter.value = it },
                     modifier = Modifier.padding(10.dp)
                 )
 
                 OutlinedTextField(
-                    label = { Text("Enter Mean Area of Nucleus") },
+                    label = { Text("Enter Worst Area of Nucleus") },
                     value = area.value,
                     onValueChange = { area.value = it },
                     modifier = Modifier.padding(10.dp)
@@ -106,8 +109,16 @@ fun App(tree: RandomForestClassifier) {
 
                 Button(
                     onClick = {
+                        try {
+                            val reader = CSVReader(null, arrayOf(), FileInputStream(File(inputFilePath.value)))
 
-                        println("placeholder :D")
+                            // Generating predictions
+                            val predictions = tree.predict(reader.readCsvToXy().a)
+
+                            // Writing the predictions
+                            val outputFile = File(outputFilePath.value)
+                            outputFile.writeText(predictions.joinToString("\n"))
+                        } catch (exception: IOException) { }
                     }
                 ) {
                     Text("Diagnose")
@@ -121,7 +132,7 @@ fun trainTree(): RandomForestClassifier? {
     // write your code here
     val targetColName = "diagnosis"
     val colsToSkip = arrayOf("id", "id2")
-    val reader = CSVReader(targetColName, colsToSkip)
+    val reader = CSVReader(targetColName, colsToSkip, object {}.javaClass.getResourceAsStream("data.csv"))
     reader.readCsvToXy()
 
     val results = Helper.train_test_split(reader.X, reader.y, 0.2)
