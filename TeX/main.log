@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.8.16)  3 OCT 2022 14:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.8.16)  7 OCT 2022 08:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1045,19 +1045,49 @@ tempboxa \hfil }\fi \vskip \belowcaptionskip  on input line 1176.
 Package: pbox 2011/12/07 v1.2 Dynamic parboxes
 \pb@xlen=\skip83
 )
-(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
-z/libraries\tikzlibraryarrows.code.tex
-File: tikzlibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/forest\forest.sty
+Package: forest 2017/07/14 v2.1.5 Drawing (linguistic) trees
 
-(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
-aryarrows.code.tex
-File: pgflibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\arrowsize=\dimen333
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.code.tex
+File: tikzlibraryshapes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ))
 (C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
-z/libraries\tikzlibraryautomata.code.tex
-File: tikzlibraryautomata.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+z/libraries\tikzlibraryshapes.misc.code.tex
+File: tikzlibraryshapes.misc.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.misc.code.tex
+File: pgflibraryshapes.misc.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+))
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.symbols.code.tex
+File: tikzlibraryshapes.symbols.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.symbols.code.tex
+File: pgflibraryshapes.symbols.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+))
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.arrows.code.tex
+File: tikzlibraryshapes.arrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.arrows.code.tex
+File: pgflibraryshapes.arrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+))
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.callouts.code.tex
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.callouts.code.tex))
 (C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
 z/libraries\tikzlibraryshapes.multipart.code.tex
 File: tikzlibraryshapes.multipart.code.tex 2021/05/15 v3.1.9a (3.1.9a)
@@ -1087,6 +1117,114 @@ File: pgflibraryshapes.multipart.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgfnodepartfivebox=\box136
 )))
 (C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryfit.code.tex
+File: tikzlibraryfit.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryintersections.code.tex
+\pgf@intersect@solutions=\count366
+)
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/pgfopts\pgfopts.sty
+Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
+\pgfopts@list@add@a@toks=\toks48
+\pgfopts@list@add@b@toks=\toks49
+)
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count367
+)
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/elocalloc\elocalloc.sty
+Package: elocalloc 2016/12/15 v0.03 local allocation for LaTeX 2015+ (DPC)
+) (C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/environ\environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/trimspaces\trimspaces.s
+ty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
+e.sty
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2022-07-04 L3 programming layer (loader) 
+
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def
+File: l3backend-pdftex.def 2022-07-01 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count368
+\l__pdf_internal_box=\box137
+))
+Package: xparse 2022-06-22 L3 Experimental document command parser
+)
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/inlinedef\inlinedef.sty
+Package: inlinedef 2008/07/10 v1.0 Inlined expansions within definitions
+\ID@toks=\toks50
+\ID@count=\count369
+)
+\ID@usercommands=\toks51
+\safeloop@depth=\count370
+\safeRKloop@depth=\count371
+\forest@temp@dimen=\dimen333
+\forest@temp@count=\count372
+\forest@n=\count373
+\forest@temp@global@count=\count374
+\forest@temp@toks=\toks52
+\forest@temparray@M=\count375
+\forest@temparray@N=\count376
+\forest@global@temparray@M=\count377
+\forest@global@temparray@N=\count378
+\forest@isnum@count=\count379
+\forest@isdim@nonintpart=\count380
+\forest@isdim@dimen=\dimen334
+\forest@sort@m=\count381
+\forest@sort@k=\count382
+\forest@sort@p=\count383
+\bracket@content=\toks53
+\bracket@afterthought=\toks54
+\forest@node@maxid=\count384
+\forest@process@left@M=\count385
+\forest@process@left@N=\count386
+\forest@process@right@M=\count387
+\forest@process@right@N=\count388
+\forest@process@saved@M=\count389
+\forest@process@saved@N=\count390
+\forest@process@result@M=\count391
+\forest@process@result@N=\count392
+\forest@process@n=\count393
+\forest@nodewalk@branch@toks=\toks55
+\forest@nodewalk@shortsteps@resolution=\toks56
+\forest@do@dynamics=\toks57
+\forest@box=\box138
+\forest@xg=\dimen335
+\forest@yg=\dimen336
+\forest@xs=\dimen337
+\forest@ys=\dimen338
+\forest@pi@toks=\toks58
+\forest@segment@toks=\toks59
+\forest@PIi@toks=\toks60
+\forest@PIii@toks=\toks61
+\forest@copy@in=\read3
+\forest@copy@out=\write6
+\forest@externalize@max@outer@n=\count394
+\forest@externalize@inner@n=\count395
+)
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryarrows.code.tex
+File: pgflibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\arrowsize=\dimen339
+))
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryautomata.code.tex
+File: tikzlibraryautomata.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
 z/libraries\tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 )
@@ -1100,14 +1238,31 @@ File: pgflibrarypatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ))
 (C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\tikzlib
 rarypgfplots.groupplots.code.tex
-\pgfplots@group@current@plot=\count366
-\pgfplots@group@current@row=\count367
-\pgfplots@group@current@column=\count368
+\pgfplots@group@current@plot=\count396
+\pgfplots@group@current@row=\count397
+\pgfplots@group@current@column=\count398
+)
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
 
-(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
-z/libraries\tikzlibrarycalc.code.tex
-File: tikzlibrarycalc.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)) (header.tex
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count399
+\Gm@cntv=\count400
+\c@Gm@tempcnt=\count401
+\Gm@bindingoffset=\dimen340
+\Gm@wd@mp=\dimen341
+\Gm@odd@mp=\dimen342
+\Gm@even@mp=\dimen343
+\Gm@layoutwidth=\dimen344
+\Gm@layoutheight=\dimen345
+\Gm@layouthoffset=\dimen346
+\Gm@layoutvoffset=\dimen347
+\Gm@dimlist=\toks62
+
+(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(header.tex
 (C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algpseudoc
 ode.sty
 Package: algpseudocode 
@@ -1117,15 +1272,15 @@ cx.sty
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count369
-\c@ALG@rem=\count370
-\c@ALG@nested=\count371
+\c@ALG@line=\count402
+\c@ALG@rem=\count403
+\c@ALG@nested=\count404
 \ALG@tlm=\skip84
 \ALG@thistlm=\skip85
-\c@ALG@Lnr=\count372
-\c@ALG@blocknr=\count373
-\c@ALG@storecount=\count374
-\c@ALG@tmpcounter=\count375
+\c@ALG@Lnr=\count405
+\c@ALG@blocknr=\count406
+\c@ALG@storecount=\count407
+\c@ALG@tmpcounter=\count408
 \ALG@tmplength=\skip86
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
@@ -1135,17 +1290,17 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 
 (C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
 Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
-\col@sep=\dimen334
-\ar@mcellbox=\box137
-\extrarowheight=\dimen335
-\NC@list=\toks48
+\col@sep=\dimen348
+\ar@mcellbox=\box139
+\extrarowheight=\dimen349
+\NC@list=\toks63
 \extratabsurround=\skip87
 \backup@length=\skip88
-\ar@cellbox=\box138
+\ar@cellbox=\box140
 )
-\rotheadsize=\dimen336
-\c@nlinenum=\count376
-\TeXr@lab=\toks49
+\rotheadsize=\dimen350
+\c@nlinenum=\count409
+\TeXr@lab=\toks64
 )
 (C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/base\latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
@@ -1165,50 +1320,45 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
 (C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/graphics\epsfig.sty
 Package: epsfig 2017/06/25 v1.7b (e)psfig emulation (SPQR)
-\epsfxsize=\dimen337
-\epsfysize=\dimen338
+\epsfxsize=\dimen351
+\epsfysize=\dimen352
 ))
-(C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
-tex.def
-File: l3backend-pdftex.def 2022-07-01 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count377
-\l__pdf_internal_box=\box139
-) (main.aux)
+(main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
 
 (C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count378
-\scratchdimen=\dimen339
-\scratchbox=\box140
-\nofMPsegments=\count379
-\nofMParguments=\count380
-\everyMPshowfont=\toks50
-\MPscratchCnt=\count381
-\MPscratchDim=\dimen340
-\MPnumerator=\count382
-\makeMPintoPDFobject=\count383
-\everyMPtoPDFconversion=\toks51
+\scratchcounter=\count410
+\scratchdimen=\dimen353
+\scratchbox=\box141
+\nofMPsegments=\count411
+\nofMParguments=\count412
+\everyMPshowfont=\toks65
+\MPscratchCnt=\count413
+\MPscratchDim=\dimen354
+\MPnumerator=\count414
+\makeMPintoPDFobject=\count415
+\everyMPtoPDFconversion=\toks66
 )
 (C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -1220,10 +1370,10 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 48.
+Package hyperref Info: Link coloring OFF on input line 50.
  (main.out) (main.out)
-\@outlinefile=\write6
-\openout6 = `main.out'.
+\@outlinefile=\write7
+\openout7 = `main.out'.
 
 
 Package pgfplots notification 'compat/show suggested version=true': you might b
@@ -1232,24 +1382,58 @@ enefit from \pgfplotsset{compat=1.18} (current compat level: 1.16).
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 52.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(72.26999pt, 452.9679pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 700.50687pt, 72.26999pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=452.9679pt
+* \textheight=700.50687pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-28.0pt
+* \headheight=12.0pt
+* \headsep=16.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=90.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 55.
 
 (C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 52.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 55.
 
 
 (C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 52
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 55
 .
 
 (C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 52
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 55
 .
 
 (C:\Users\jedli\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
@@ -1285,102 +1469,119 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
-[1
-
-{C:/Users/jedli/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-<screenshot001.png, id=22, 722.7pt x 458.46281pt>
+<screenshot001.png, id=10, 722.7pt x 458.46281pt>
 File: screenshot001.png Graphic file (type png)
 <use screenshot001.png>
 Package pdftex.def Info: screenshot001.png  used on input line 34.
-(pdftex.def)             Requested size: 156.20453pt x 99.09224pt.
-<screenshot002.png, id=23, 706.89093pt x 447.92343pt>
+(pdftex.def)             Requested size: 203.83417pt x 129.3061pt.
+<screenshot002.png, id=11, 706.89093pt x 447.92343pt>
 File: screenshot002.png Graphic file (type png)
 <use screenshot002.png>
 Package pdftex.def Info: screenshot002.png  used on input line 36.
-(pdftex.def)             Requested size: 156.20453pt x 98.98088pt.
+(pdftex.def)             Requested size: 203.83417pt x 129.15631pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--42
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
- []
+[1
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 65--66
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 71--72
+{C:/Users/jedli/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 77--78
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+
+ []
+
+(fig/decision_tree.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
 
  []
 
 [2 <./screenshot001.png (PNG copy)> <./screenshot002.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--85
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--86
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--139
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--139
+Underfull \hbox (badness 10000) in paragraph at lines 145--145
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--139
+Underfull \hbox (badness 10000) in paragraph at lines 145--145
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--139
+Underfull \hbox (badness 10000) in paragraph at lines 145--145
 
  []
 
 
-LaTeX Warning: Float too large for page by 19.38593pt on input line 144.
+Underfull \hbox (badness 10000) in paragraph at lines 145--145
+
+ []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-)
-Underfull \hbox (badness 10000) in paragraph at lines 157--57
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
 
  []
 
-[3] [4] [5] (main.aux)
+(fig/random_forest.tex)
+Overfull \hbox (26.7602pt too wide) in paragraph at lines 42--166
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--166
+
+ []
+
+
+Underfull \vbox (badness 2980) has occurred while \output is active []
+
+ [3])
+Underfull \hbox (badness 10000) in paragraph at lines 167--60
+
+ []
+
+[4] [5] (main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 6A08E3D31715D385A40574A2002091E1;207.
  ) 
 Here is how much of TeX's memory you used:
- 35903 strings out of 478338
- 849678 string characters out of 2836700
- 1221689 words of memory out of 3000000
- 53660 multiletter control sequences out of 15000+600000
- 480150 words of font info for 74 fonts, out of 8000000 for 9000
+ 50332 strings out of 478338
+ 1207692 string characters out of 2836700
+ 1583976 words of memory out of 3000000
+ 67997 multiletter control sequences out of 15000+600000
+ 482269 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,19n,94p,722b,609s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 158i,19n,156p,1582b,3612s stack positions out of 10000i,1000n,20000p,200000b,80000s
 <C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx10.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmbx12.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/p
@@ -1390,28 +1591,30 @@ eX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/jedli/AppData/Local/Progr
 ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/jedli/AppData/L
 ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/jedli/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Use
-rs/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb
-><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
-mmi6.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
-nts/cm/cmmi7.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmmi9.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/jedli/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/jedli/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/jedli/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/jedli/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users
-/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><
-C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cms
-s9.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmsy6.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/amsfonts/cm/cmsy7.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/jedli/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (5 pages, 1782513 bytes).
+rs/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pf
+b><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmmi5.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmmi6.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmmi7.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmmi9.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/jedli/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/jedli/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/jedli/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/jedli/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users
+/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb>
+<C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+ss8.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmss9.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmssbx10.pfb><C:/Users/jedli/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/jedli/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/jedli/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/jedli/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/jedli/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (5 pages, 1811934 bytes).
 PDF statistics:
- 172 PDF objects out of 1000 (max. 8388607)
- 14 named destinations out of 1000 (max. 500000)
+ 183 PDF objects out of 1000 (max. 8388607)
+ 15 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

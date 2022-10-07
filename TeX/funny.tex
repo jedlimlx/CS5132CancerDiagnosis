@@ -136,10 +136,12 @@ Finally, we need to explain when the decision tree will decide when it should st
 		
 		\alg{$\sf{Qry({f_1,\dots,f_n},\textbf{N})}$}
 		$i\gets\textbf{N}.\sf{func}({f_1,\dots,f_n})$\\
-		If $\textbf{N}.\sf{children}[i]=\bot$ then\\
-		\ind Return $\textbf{N}.\textbf{p}$ \\
+		If $\textbf{N}.$$\sf{children}$$[i]=\bot$ then\\
+		\ind If $\textbf{N}.\textbf{p} < 0.5$ then \\
+		\ind \ind Return 0\\
+		\ind else return 1\\
 		Else \\
-		\ind Return $\textbf{N}.\sf{children}[i]$\\
+		\ind Return $\sf{Qry}$(${f_1,\dots,f_n},\mathnormal{\textbf{N}.\sf{children}[i]}$)\\
 	}
 	\vspace{-.5cm}
 	\caption{Pseudocode for construction and inference of the tree.}
@@ -161,3 +163,5 @@ Finally, we need to explain when the decision tree will decide when it should st
 To improve the performance of our classifier, we make use of many different decision tree classifiers in an ensemble. \\
 
 \input{fig/random_forest}
+
+In essence, the data is split into multiple non-overlapping parts. A decision tree is trained on each part and together they form an ensemble. To obtain the final prediction, majority voting is used on the outputs of each decision tree. If more decision trees predict that the cells are benign, the prediction of the random forest will be benign. On the other hand, if more decision trees predict that the cells are malignant, the output of the random forest will be . \\

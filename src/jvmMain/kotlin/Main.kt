@@ -10,12 +10,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import java.awt.FileDialog
-import java.io.File
 
 @Composable
 @Preview
-fun App() {
-    val text = remember { mutableStateOf("") }
+fun App(tree: RandomForestClassifier) {
+    val perimeter = remember { mutableStateOf("") }
+    val area = remember { mutableStateOf("") }
+    val uniformity = remember { mutableStateOf("") }
+    val homogenity = remember { mutableStateOf("") }
+
+    val prediction = remember { mutableStateOf("") }
+
     val inputFilePath = remember { mutableStateOf("Path to input file") }
     val outputFilePath = remember { mutableStateOf("Path to output file") }
 
@@ -23,19 +28,47 @@ fun App() {
         Row(modifier = Modifier.padding(10.dp)) {
             Column(modifier = Modifier.padding(10.dp)) {
                 OutlinedTextField(
-                    label = { Text("Enter Radius of Nucleus") },
-                    value = text.value,
-                    onValueChange = { text.value = it },
+                    label = { Text("Enter Mean Perimeter of Nucleus") },
+                    value = perimeter.value,
+                    onValueChange = { perimeter.value = it },
+                    modifier = Modifier.padding(10.dp)
+                )
+
+                OutlinedTextField(
+                    label = { Text("Enter Mean Area of Nucleus") },
+                    value = area.value,
+                    onValueChange = { area.value = it },
+                    modifier = Modifier.padding(10.dp)
+                )
+
+                OutlinedTextField(
+                    label = { Text("Enter Uniformity of Nuclei") },
+                    value = uniformity.value,
+                    onValueChange = { uniformity.value = it },
+                    modifier = Modifier.padding(10.dp)
+                )
+
+                OutlinedTextField(
+                    label = { Text("Enter Homogenity of Nuclei") },
+                    value = homogenity.value,
+                    onValueChange = { homogenity.value = it },
                     modifier = Modifier.padding(10.dp)
                 )
 
                 Button(
                     onClick = {
-                        println("placeholder :D")
+                        prediction.value = if (tree.predict(arrayOf(doubleArrayOf(
+                                perimeter.value.toDouble(),
+                                area.value.toDouble(),
+                                uniformity.value.toDouble(),
+                                homogenity.value.toDouble()
+                        )))[0] == 0) "Benign" else "Malignant"
                     }
                 ) {
                     Text("Diagnose")
                 }
+
+                Text(text=prediction.value)
             }
 
             Divider(
@@ -73,6 +106,7 @@ fun App() {
 
                 Button(
                     onClick = {
+
                         println("placeholder :D")
                     }
                 ) {
@@ -83,11 +117,39 @@ fun App() {
     }
 }
 
+fun trainTree(): RandomForestClassifier? {
+    // write your code here
+    val targetColName = "diagnosis"
+    val colsToSkip = arrayOf("id", "id2")
+    val reader = CSVReader(targetColName, colsToSkip)
+    reader.readCsvToXy()
+
+    val results = Helper.train_test_split(reader.X, reader.y, 0.2)
+    if (results == null) {
+        println("Train Test Split is null")
+        return null
+    }
+
+    val clf = DecisionTree(100)
+    clf.fit(results.X_train, results.y_train)
+
+    var y_pred = clf.predict(results.X_test)
+    println("Accuracy: " + Helper.accuracy_score(results.y_test, y_pred))
+
+    val rClf = RandomForestClassifier()
+    rClf.fit(results.X_train, results.y_train)
+    println("fit done")
+
+    y_pred = rClf.predict(results.X_test)
+    println("Accuracy: " + Helper.accuracy_score(results.y_test, y_pred))
+    return rClf
+}
+
 fun main() {
-    Main.main(arrayOf(""))
-    // return application {
-    //    Window(title="Breast Cancer Diagnosis", onCloseRequest = ::exitApplication) {
-    //        App()
-    //    }
-    // }
+    val tree = trainTree()!!
+    return application {
+       Window(title="Breast Cancer Diagnosis", onCloseRequest = ::exitApplication) {
+           App(tree)
+       }
+    }
 }
