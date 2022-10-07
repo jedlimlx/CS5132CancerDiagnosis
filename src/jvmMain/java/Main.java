@@ -1,6 +1,6 @@
 public class Main {
     public static RandomForestClassifier trainTree() {
-	    // write your code here
+
         String targetColName = "diagnosis";
         String[] colsToSkip = {"id"};
 
