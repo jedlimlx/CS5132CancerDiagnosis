@@ -4,7 +4,9 @@ the threshold value, and the connected left and right child, which will be usefu
 the tree is recursively traversed in order to make a prediction.
  */
 
-public class TreeNode<T> extends Node<T> {
+import java.io.Serializable;
+
+public class TreeNode<T> extends Node<T> implements Serializable {
     private Integer feature;
     public void setFeature(Integer feature)
     {

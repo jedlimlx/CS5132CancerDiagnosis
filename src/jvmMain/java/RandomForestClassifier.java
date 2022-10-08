@@ -1,4 +1,6 @@
-public class RandomForestClassifier {
+import java.io.Serializable;
+
+public class RandomForestClassifier implements Serializable {
     public int maxDepth;
     public int minSamplesSplit;
     public int numTrees;

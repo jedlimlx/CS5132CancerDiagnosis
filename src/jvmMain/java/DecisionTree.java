@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -12,7 +13,7 @@ There are 2 main steps:
  This involves traversing the tree recursively and  returning the most-common class label as a
  response value.
 */
-public class DecisionTree {
+public class DecisionTree implements Serializable {
     public int maxDepth;
     public int minSamplesSplit;
     public TreeNode<Integer> root;

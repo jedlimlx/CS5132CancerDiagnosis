@@ -7,12 +7,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.awt.ComposeWindow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Window
-import androidx.compose.ui.window.application
 import java.awt.FileDialog
-import java.io.File
-import java.io.FileInputStream
-import java.io.IOException
+import java.io.*
+
 
 @Composable
 @Preview
@@ -158,9 +155,15 @@ fun trainTree(): RandomForestClassifier? {
 
 fun main() {
     val tree = trainTree()!!
+    val fos = FileOutputStream("model.ser")
+    val oos = ObjectOutputStream(fos)
+    oos.writeObject(tree);
+    oos.close();
+    fos.close();
+    /*
     return application {
        Window(title="Breast Cancer Diagnosis", onCloseRequest = ::exitApplication) {
            App(tree)
        }
-    }
+    }*/
 }
