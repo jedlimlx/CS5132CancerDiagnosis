@@ -168,7 +168,6 @@ public class DecisionTree {
     }
 
     public void fit(double[][] X, int[] y) {
-        System.out.println("Fitting data into Decision Tree...");
         this.root = build_tree(X, y);
     }
 

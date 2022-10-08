@@ -152,7 +152,7 @@ fun trainTree(): RandomForestClassifier? {
     println("fit done")
 
     y_pred = rClf.predict(results.X_test)
-    println("Accuracy: " + Helper.accuracy_score(results.y_test, y_pred))
+    println(Metrics(results.y_test, y_pred))
     return rClf
 }
 
