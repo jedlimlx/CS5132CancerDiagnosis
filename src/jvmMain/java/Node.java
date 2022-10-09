@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public class Node<T> implements Serializable {
+public class Node<T> {
     private T item;
     Node<T>[] neighbours; //Package accessibility
 
