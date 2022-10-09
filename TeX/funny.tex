@@ -175,6 +175,13 @@ In essence, the data is split into multiple non-overlapping parts. A decision tr
 	\item Due to their being more trees, the length of data per decision tree has reduced from $|\textbf{S}|$ to $\frac{|\textbf{S}|}{t}$
 	\item If we apply the same math from earlier we see the total average time-complexity for training the Random Forest Classifier is 
 	$$O(t\times\sum_{x=0}^{\bar{d}}\sum_{i=1}^{2^x}n\times\left(\frac{|\textbf{S}_{x,i}|}{t}\right)^2)=O(\sum_{x=0}^{\bar{d}}n\times\frac{|\textbf{S}|^2}{2^xt})=O(n\times\frac{|\textbf{S}|^2}{t}\times(2-2^{-\bar{d}}))=O(\frac{n\times|\textbf{S}|^2}{t})$$
+	\item In the worst case, let's say that the dataset is split unevenly such that all the sample except one go to the next node. Then, $|\textbf{S}_{x,0}|=|\textbf{S}|-x$ and $|\textbf{S}_{x,1}|=1$.
+	\item Then, the total worst-case time-complexity for training the decision tree is
+	$$O(t \times \sum_{x=0}^{\bar{d}}\sum_{i=1}^{2^x}n\times\left(\frac{|\textbf{S}_{x,i}|}{t}\right)^2)=O(\sum_{x=0}^{\bar{d}}n\times(\frac{|\textbf{S}|^2}{t}+t))=O(\frac{n\times \bar{d}\times|\textbf{S}|^2}{t})$$
+	\item Using the same logic as before we can alsoc calculate the memory-complexity for training but we must account for the reduced datalength and multiple trees.
+	$$O(t\times\sum_{x=0}^{\bar{d}}\sum_{i=1}^{2^x}\frac{|\textbf{S}_{x,i}|}{t})=O(\bar{d}\times|\textbf{S}|)$$
+	\item Now, let's calculate the time complexity of inference. As we learnt from earlier, for a tree of height $d$, the worst-case time-complexity is $O(d)$. Since there are $t$ trees with average height $\bar{d}$, the worst-case time-complexity is $O(t\times \bar{d})$ The memory complexity is $O(t)$ because we need to store a single output value for every tree and take the average.
+	
 	
 \end{itemize}
 

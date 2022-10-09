@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.9.12)  9 OCT 2022 18:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.9.12)  9 OCT 2022 19:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1556,11 +1556,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
-
-Underfull \vbox (badness 1221) has occurred while \output is active []
-
- [4])
-[5] [6] (main.aux)
+[4]) [5] [6] (main.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1570,7 +1566,7 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  50254 strings out of 478582
  1204797 string characters out of 2844344
- 1582714 words of memory out of 3000000
+ 1584714 words of memory out of 3000000
  67676 multiletter control sequences out of 15000+600000
  482269 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1605,7 +1601,7 @@ eX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/zayan/AppData/Local/Progr
 ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/zayan/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/zayan/App
 Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (6 pages, 1826648 bytes).
+Output written on main.pdf (6 pages, 1828094 bytes).
 PDF statistics:
  192 PDF objects out of 1000 (max. 8388607)
  19 named destinations out of 1000 (max. 500000)
