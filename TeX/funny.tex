@@ -169,6 +169,23 @@ To improve the performance of our classifier, we make use of many different deci
 
 In essence, the data is split into multiple non-overlapping parts. A decision tree is trained on each part and together they form an ensemble. To obtain the final prediction, majority voting is used on the outputs of each decision tree. If more decision trees predict that the cells are benign, the prediction of the random forest will be benign. On the other hand, if more decision trees predict that the cells are malignant, the output of the random forest will be that the cells are malignant. \\
 
+\heading{Time Complexity} The time complexity for the Random Forest Classifier is similar to that of the standard Decision Tree as the Decision Tree underpins the structure of the Random Forest Classifier.
+\begin{itemize}
+	\item Let us assume that the tree will be fully filled with height $d$. This means that there will be $2^{d+1}-1$ nodes in the tree. This means the split would have been done $2^{d}-1$ times. In practice, this may not be true but let's assume so for the sake of simplicity.
+	\item Splitting the tree has a time-complexity of $O(n\times|\textbf{S}|^2)$ where $|\textbf{S}|$ is the length of the data that still remains at that node and $n$ is the number of features. This is because calculating the entropy has time-complexity $O(|\textbf{S}|)$ and there $|\textbf{S}|$ thresholds to compute and $n$ features to compute them for.
+	\item Now,let's denote the size of the dataset at depth $x$ and at the $i^{th}$ node as $|\textbf{S}_{x,i}|$. We know that $|\textbf{S}|=\sum_{i=1}^{2^x}|\textbf{S}_{x,i}|$. 
+	\item On average, we can assume that $|\textbf{S}|$ will be halved at each split. Thus,
+	$$|\textbf{S}_{x,i}|=\frac{|\textbf{S}|}{2^x}$$
+	\item Then, the total average time-complexity for training the decision tree is 
+	$$O(\sum_{x=0}^{d}\sum_{i=1}^{2^x}n\times|\textbf{S}_{x,i}|^2)=O(\sum_{x=0}^{d}n\times\frac{|\textbf{S}|^2}{2^x})=O(n\times|\textbf{S}|^2\times(2-2^{-d}))=O(n\times|\textbf{S}|^2)$$
+	\item In the worst case, let's say that the dataset is split unevenly such that all the sample except one go to the next node. Then, $|\textbf{S}_{x,0}|=|\textbf{S}|-x$ and $|\textbf{S}_{x,1}|=1$.
+	\item Then, the total worst-case time-complexity for training the decision tree is
+	$$O(\sum_{x=0}^{d}\sum_{i=1}^{2^x}n\times|\textbf{S}_{x,i}|^2)=O(\sum_{x=0}^{d}n\times(|\textbf{S}|^2+1))=O(n\times d\times|\textbf{S}|^2)$$
+	\item Now, let's calculate the memory complexity of training the tree. Calculating the entropy requires creating the new dataset splits to be handed to the children nodes. This is done in $O(|\textbf{S}_{x,i}|)$ space because the size of 2 new dataset splits must add up to the dataset they were split from. For simplicity, let's assume none of this memory is deallocated. Then, the memory complexity is 
+	$$O(\sum_{x=0}^{d}\sum_{i=1}^{2^x}|\textbf{S}_{x,i}|)=O(d\times|\textbf{S}|)$$
+	\item Now, let's calculate the time complexity of inference. Deciding which path to take in a decision tree is O(1). Thus, for a tree of height $d$ and average height $\bar{d}$, the worst-case time-complexity is $O(d)$ and $O(\bar{d})$. The memory complexity is $O(1)$ because no additional space is needed during inference other than the space needed to store the tree.
+\end{itemize}
+
 \section{Performance}
 
 Now, we shall evaluate the performance of our model. The results are summarised in the table below.
