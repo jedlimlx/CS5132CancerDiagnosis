@@ -83,11 +83,10 @@ The feature that results in the greatest information gain will be selected for t
 Finally, we need to explain when the decision tree will decide when it should stop splitting. It will do this when a maximum depth $d$ has been reached or when there a fewer than $s$ samples remaining to split. \\
 
 \heading{Pseudocode} With this, we can now construct our decision tree. The pseudocode for construction and inference can be found below. 
-
 \begin{itemize}
-	\item \textbf{S} is the training data with $m$ classes and $n$ continuous features. It is a set and all \textbf{S} are within $\{\textbf{S} : \textbf{S} = {((f_1,\dots,f_n),c),f_i\in\mathbb{R},c\in [1,m]}\}$\\
-	\item $d$ is the maximum depth that the tree can reach and $s$ the minimum size of the data before we stop branching the tree.\\
-	\item We also define the node object $\textbf{N}$. It has a children attribute $N.\sf{children}$ which is a list of $\eta$ child nodes $\{\textbf{N}_1,\dots,\textbf{N}_\eta\}$. Furthermore, it also stores a function $\textbf{N}.\sf{func}(\mathnormal{(f_1,f_2,\dots,f_n)})$ which takes in a list of features and outputs an integer $i\in[1,\eta]$. The depth of the node in the tree is also stored in $\textbf{N}.\sf{depth}$\\
+	\item \textbf{S} is the training data with $m$ classes and $n$ continuous features. It is a set and all \textbf{S} are within $\{\textbf{S} : \textbf{S} = {((f_1,\dots,f_n),c),f_i\in\mathbb{R},c\in [1,m]}\}$
+	\item $d$ is the maximum depth that the tree can reach and $s$ the minimum size of the data before we stop branching the tree.
+	\item We also define the node object $\textbf{N}$. It has a children attribute $N.\sf{children}$ which is a list of $\eta$ child nodes. $\{\textbf{N}_1,\dots,\textbf{N}_\eta\}$. Furthermore, it also stores a function $\textbf{N}.\sf{func}(\mathnormal{(f_1,f_2,\dots,f_n)})$ which takes in a list of features and outputs an integer $i\in[1,\eta]$. The depth of the node in the tree is also stored in $\textbf{N}.\sf{depth}$
 \end{itemize}
 
 
@@ -105,6 +104,7 @@ Finally, we need to explain when the decision tree will decide when it should st
 		\alg{$\sf{BuildTree}(\bf{S}, \mathnormal{d, s})$}
 		Initialise new node $\textbf{N}$\\
 		Initialise empty queue $\bf{L}$\\
+		$\textbf{N}_{root}\gets\textbf{N}$\\
 		$\textbf{L}.\sf{push}((\textbf{S},\textbf{N}))$\\
 		While $\textbf{L}.\sf{size}\neq0$ do\\
 		\ind $\textbf{S}, \textbf{N}\gets \textbf{L}.\sf{pop}()$ \\
@@ -112,7 +112,7 @@ Finally, we need to explain when the decision tree will decide when it should st
 		\ind $I_{max}\gets0$ \\
 		\ind For $i\in1\dots n$ do \\
 		\ind \ind $E\gets 0$ \\
-		\ind \ind For $t\in \{f_i : ((f_1,\dots,f_n),c)\in \textbf{S}_1\}$ do \\
+		\ind \ind For $t\in \{f_i : ((f_1,\dots,f_n),c)\in \textbf{S}\}$ do \\
 		%\ind \ind \ind $\textbf{S}_{less}\gets\{((f_1,f_2,\dots,f_n),c) : f_i<t, ((f_1,f_2,\dots,f_n),c)\in \textbf{S}\}$ \\
 		%\ind \ind \ind $\textbf{S}_{more}\gets\{((f_1,f_2,\dots,f_n),c) : f_i>t, ((f_1,f_2,\dots,f_n),c)\in \textbf{S}\}$ \\
 		\ind \ind \ind $\textbf{S}_1,\textbf{S}_2,I\gets\sf{CalculateEntropy}\mathnormal{(\textbf{S}, t)}$ \\
@@ -132,7 +132,7 @@ Finally, we need to explain when the decision tree will decide when it should st
 		\ind $\textbf{L}.\sf{push}\mathnormal{((\textbf{S}_4,\textbf{M}_r))}$\\
 		\ind \color{gray}{End for} \\
 		\color{gray}{End while}\\
-		\color{black}Return $\textbf{N}$\\ \\
+		\color{black}Return $\textbf{N}_{root}$\\ \\
 		
 		\alg{$\sf{Qry({f_1,\dots,f_n},\textbf{N})}$}
 		$i\gets\textbf{N}.\sf{func}({f_1,\dots,f_n})$\\
@@ -150,18 +150,25 @@ Finally, we need to explain when the decision tree will decide when it should st
 \end{figure}
 
 \heading{Time Complexity} Now, let us analyse the time and space complexity of our algorithm. 
-
 \begin{itemize}
 	\item Let us assume that the tree will be fully filled with height $d$. This means that there will be $2^{d+1}-1$ nodes in the tree. This means the split would have been done $2^{d}-1$ times. In practice, this may not be true but let's assume so for the sake of simplicity.
-	\item Splitting the tree has a time-complexity of $O(\mu\times|\textbf{S}|)$ where $|\textbf{S}|$ is the length of the data that still remains at that node and 
-	$$\mu=\sum_{i=0}^{n}f_i\times|\{f_i : ((f_1,\dots,f_n),c)\in \textbf{S}_1\}|$$
-	\item It should be reasonable to assume that on average each split $|\textbf{S}_{new}|=\frac{|\textbf{S}|}{2}$. Then, at depth $x$, the size of the dataset will be $|\textbf{S}_x|=\frac{|\textbf{S}|}{2^x}$ Then, the total average time-complexity is 
-	$$O(\sum_{i=0}^{d}2^i\times \mu\times |\textbf{S}_i|)=O(\sum_{i=0}^{d}\mu\times |\textbf{S}|)=O(\mu\times |\textbf{S}|)$$
+	\item Splitting the tree has a time-complexity of $O(n\times|\textbf{S}|^2)$ where $|\textbf{S}|$ is the length of the data that still remains at that node and $n$ is the number of features. This is because calculating the entropy has time-complexity $O(|\textbf{S}|)$ and there $|\textbf{S}|$ thresholds to compute and $n$ features to compute them for.
+	\item Now,let's denote the size of the dataset at depth $x$ and at the $i^{th}$ node as $|\textbf{S}_{x,i}|$. We know that $|\textbf{S}|=\sum_{i=1}^{2^x}|\textbf{S}_{x,i}|$. 
+	\item On average, we can assume that $|\textbf{S}|$ will be halved at each split. Thus,
+	$$|\textbf{S}_{x,i}|=\frac{|\textbf{S}|}{2^x}$$
+	\item Then, the total average time-complexity for training the decision tree is 
+	$$O(\sum_{x=0}^{d}\sum_{i=1}^{2^x}n\times|\textbf{S}_{x,i}|^2)=O(\sum_{x=0}^{d}n\times\frac{|\textbf{S}|^2}{2^x})=O(n\times|\textbf{S}|^2\times(2-2^{-d}))=O(n\times|\textbf{S}|^2)$$
+	\item In the worst case, let's say that the dataset is split unevenly such that all the sample except one go to the next node. Then, $|\textbf{S}_{x,0}|=|\textbf{S}|-x$ and $|\textbf{S}_{x,1}|=1$.
+	\item Then, the total worst-case time-complexity for training the decision tree is
+	$$O(\sum_{x=0}^{d}\sum_{i=1}^{2^x}n\times|\textbf{S}_{x,i}|^2)=O(\sum_{x=0}^{d}n\times(|\textbf{S}|^2+1))=O(n\times d\times|\textbf{S}|^2)$$
+	\item Now, let's calculate the memory complexity of training the tree. Calculating the entropy requires creating the new dataset splits to be handed to the children nodes. This is done in $O(|\textbf{S}_{x,i}|)$ space because the size of 2 new dataset splits must add up to the dataset they were split from. For simplicity, let's assume none of this memory is deallocated. Then, the memory complexity is 
+	$$O(\sum_{x=0}^{d}\sum_{i=1}^{2^x}|\textbf{S}_{x,i}|)=O(d\times|\textbf{S}|)$$
+	\item Now, let's calculate the time complexity of inference. Deciding which path to take in a decision tree is O(1). Thus, for a tree of height $d$ and average height $\bar{d}$, the worst-case time-complexity is $O(d)$ and $O(\bar{d})$. The memory complexity is $O(1)$ because no additional space is needed during inference other than the space needed to store the tree.
 \end{itemize}
 
 \section{Random Forest}
-To improve the performance of our classifier, we make use of many different decision tree classifiers in an ensemble. \\
+To improve the performance of our classifier, we make use of many different decision tree classifiers in an ensemble.
 
 \input{fig/random_forest}
 
-In essence, the data is split into multiple non-overlapping parts. A decision tree is trained on each part and together they form an ensemble. To obtain the final prediction, majority voting is used on the outputs of each decision tree. If more decision trees predict that the cells are benign, the prediction of the random forest will be benign. On the other hand, if more decision trees predict that the cells are malignant, the output of the random forest will be . \\
+In essence, the data is split into multiple non-overlapping parts. A decision tree is trained on each part and together they form an ensemble. To obtain the final prediction, majority voting is used on the outputs of each decision tree. If more decision trees predict that the cells are benign, the prediction of the random forest will be benign. On the other hand, if more decision trees predict that the cells are malignant, the output of the random forest will be that the cells are malignant. \\
