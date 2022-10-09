@@ -3,10 +3,7 @@ TreeNode stores the splits in a node. The node contains information about the fe
 the threshold value, and the connected left and right child, which will be useful when
 the tree is recursively traversed in order to make a prediction.
  */
-
-import java.io.Serializable;
-
-public class TreeNode<T> extends Node<T> implements Serializable {
+public class TreeNode<T> extends Node<T> {
     private Integer feature;
     public void setFeature(Integer feature)
     {

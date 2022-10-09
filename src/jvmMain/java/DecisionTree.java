@@ -13,7 +13,7 @@ There are 2 main steps:
  This involves traversing the tree recursively and  returning the most-common class label as a
  response value.
 */
-public class DecisionTree implements Serializable {
+public class DecisionTree {
     public int maxDepth;
     public int minSamplesSplit;
     public TreeNode<Integer> root;

@@ -62,6 +62,7 @@ public class Helper {
     public static int[] randomChoice(int upperBound, int size) { // replace is True
         int[] rtn = new int[size];
         Random random = new Random();
+        random.setSeed(111222);
         for (int i = 1; i < rtn.length; ++i)
             rtn[i] = random.nextInt(upperBound);
         return rtn;
@@ -69,6 +70,7 @@ public class Helper {
     // 5 -> [3,0,2,4,1], np.random.choice(x,x,replace=False)
     public static Set<Integer> randomNumbersNoRepeat(int size) {
         Random random = new Random();
+        random.setSeed(222333);
         Set<Integer> set = new LinkedHashSet<>();
         while (set.size() < size)
             set.add(random.nextInt(size));
