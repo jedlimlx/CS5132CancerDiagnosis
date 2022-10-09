@@ -10,13 +10,9 @@ Fine needle aspiration is an alternative that allows the doctor to take out a sm
 To resolve this, this project uses a fuzzy decision tree to classify breast tumor cells into malignant cancer cells or benign non-cancerous cells. \\
 
 \section{Dataset}
-The dataset used was the Breast Cancer Wisconsin (Diagnostic) Data Set from the University of Irvine (UCI) Machine Learning Repository.  
+The dataset used was the Breast Cancer Wisconsin (Diagnostic) Data Set from the University of Irvine (UCI) Machine Learning Repository. The dataset contained 569 instances, with no missing data. 357 instances were benign (not cancerous) and 212 were malignant (cancerous). \\
 
-The dataset contained 569 instances, with no missing data. 357 instances were benign (not cancerous) and 212 were malignant (cancerous). \\
-
-The features were computed from digitalized images of fine needle aspirates of breast tumors.  \\
-
-The features describe 10 characteristics of the cell nuclei present in the images:
+The features were computed from digitalized images of fine needle aspirates of breast tumors. They describe 10 characteristics of the cell nuclei present in the images:
 
 \begin{itemize}
 	\item The radius of an individual nucleus
@@ -31,9 +27,9 @@ The features describe 10 characteristics of the cell nuclei present in the image
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.45\linewidth]{screenshot001}
+	\includegraphics[width=0.4\linewidth]{screenshot001}
 	\hspace{0.5cm}
-	\includegraphics[width=0.45\linewidth]{screenshot002}
+	\includegraphics[width=0.4\linewidth]{screenshot002}
 	\caption{A picture of breast cells. The cells on the left are begin while the cells on the right are cancerous.}
 	\label{fig:images}
 \end{figure}
@@ -42,7 +38,6 @@ The features describe 10 characteristics of the cell nuclei present in the image
 
 The mean, standard error and worst (mean of the three largest values) of these features are computed for each image, resulting in 30 features in the UCI dataset. \\
 
-\iffalse
 We follow in the footsteps of Sizilio et al. \ref{fna} and add newly generated features of homogeneity and uniformity that were demonstrated to have diagnostic importance. \\
 
 Uniformity is the difference between the radius worst value and the radius mean value and is an indication of the variability in size of the cell nuclei. \\
@@ -51,6 +46,7 @@ Homogeneity is the difference between the worst value of symmetry and the mean v
 
 According to Sizilio et al., the features of area, perimeter, homogeneity and uniformity produced the best results. Thus, we use these 4 feature and drop all other features. \\
 
+\iffalse
 The minimum and maximum area, perimeter, homogeneity and uniformity for the 2 labels (benign and malignant) are computed and displayed in the table below. \\
 
 Fuzzy intervals are present for each of the above 4 features, whereby the benign values are within the range of the malignant values. This means that it is not linearly possible to diagnosis a breast lump as benign or malignant using a simple decision tree. Thus, we shall resort to using a fuzzy decision tree. \\
@@ -82,7 +78,7 @@ The feature that results in the greatest information gain will be selected for t
 
 Finally, we need to explain when the decision tree will decide when it should stop splitting. It will do this when a maximum depth $d$ has been reached or when there a fewer than $s$ samples remaining to split. \\
 
-\heading{Pseudocode} With this, we can now construct our decision tree. The pseudocode for construction and inference can be found below. 
+\heading{Pseudocode} With this, we can now construct our decision tree. The pseudocode for construction and inference can be found \ref{fig:pseudocode}.
 \begin{itemize}
 	\item \textbf{S} is the training data with $m$ classes and $n$ continuous features. It is a set and all \textbf{S} are within $\{\textbf{S} : \textbf{S} = {((f_1,\dots,f_n),c),f_i\in\mathbb{R},c\in [1,m]}\}$
 	\item $d$ is the maximum depth that the tree can reach and $s$ the minimum size of the data before we stop branching the tree.
@@ -145,7 +141,7 @@ Finally, we need to explain when the decision tree will decide when it should st
 	}
 	\vspace{-.5cm}
 	\caption{Pseudocode for construction and inference of the tree.}
-	\label{fig-rh}
+	\label{fig:pseudocode}
 	\vspace{-.5cm}
 \end{figure}
 
@@ -172,3 +168,19 @@ To improve the performance of our classifier, we make use of many different deci
 \input{fig/random_forest}
 
 In essence, the data is split into multiple non-overlapping parts. A decision tree is trained on each part and together they form an ensemble. To obtain the final prediction, majority voting is used on the outputs of each decision tree. If more decision trees predict that the cells are benign, the prediction of the random forest will be benign. On the other hand, if more decision trees predict that the cells are malignant, the output of the random forest will be that the cells are malignant. \\
+
+\section{Performance}
+
+Now, we shall evaluate the performance of our model. The results are summarised in the table below.
+
+\section{GUI}
+
+
+\section{Reflections}
+\heading{Matthew} Coding the decision tree from scratch was enjoyable and it allowed me to have an under the hood understanding of an important machine learning algorithm. An improvement that we could have made as a group was to do more planning in the beginning. We had to reverse some decisions to improve on our final product. Despite this, my group worked very well together as a team as we are good friends to begin with (and somehow managed to be in the same team even though it was RNG). Overall, I have always liked data structures and algorithms and this module was both educational and enjoyable.
+
+\heading{Jed} I was largely responsible for writing the report and coding out the GUI. From writing the report, I learnt alot about about writing good and clear pseudocode as well as writing good mathematical analysis on time-complexity and space-complexity. For the GUI, instead of using JavaFX, I made use of Jetpack Compose for Desktop. It was much easier to use and it has replaced JavaFX in many projects that I am doing. Overall, I enjoyed working on this task but I found the need for the tree to used for a social cause very restricting. The task would be easier and much more fun if we have the flexibility of using a tree for whatever purpose we want such as quad-trees / oct-trees for gravitational simulations. Also having more flexibility in what language we can use for the assignment and the module in general would be nice because data structures and algorithms can be implemented in any language, not just Java.
+
+\heading{Zayan}
+
+\heading{Mayukh}
