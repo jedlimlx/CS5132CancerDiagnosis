@@ -109,8 +109,51 @@ To improve the performance of our classifier, we make use of many different deci
 
 In essence, the data is split into multiple non-overlapping parts. A decision tree is trained on each part and together they form an ensemble. To obtain the final prediction, majority voting is used on the outputs of each decision tree. If more decision trees predict that the cells are benign, the prediction of the random forest will be benign. On the other hand, if more decision trees predict that the cells are malignant, the output of the random forest will be that the cells are malignant. \\
 
+\heading{Time Complexity} The time complexity for the Random Forest Classifier is similar to that of the standard Decision Tree as the Decision Tree underpins the structure of the Random Forest Classifier.
+\begin{itemize}
+	\item As discussed earlier $|\textbf{S}|$ is the length of the data, $n$ is the number of features. Now, we also let $t$ be the number of trees in a random forest and we let $\bar{d}$ be the average height of each decision tree.
+	\item Due to their being more trees, the length of data per decision tree has reduced from $|\textbf{S}|$ to $\frac{|\textbf{S}|}{t}$
+	\item If we apply the same math from earlier we see the total average time-complexity for training the Random Forest Classifier is 
+	$$O(t\times\sum_{x=0}^{\bar{d}}\sum_{i=1}^{2^x}n\times\left(\frac{|\textbf{S}_{x,i}|}{t}\right)^2)=O(\sum_{x=0}^{\bar{d}}n\times\frac{|\textbf{S}|^2}{2^xt})=O(n\times\frac{|\textbf{S}|^2}{t}\times(2-2^{-\bar{d}}))=O(\frac{n\times|\textbf{S}|^2}{t})$$
+	\item In the worst case, let's say that the dataset is split unevenly such that all the sample except one go to the next node. Then, $|\textbf{S}_{x,0}|=|\textbf{S}|-x$ and $|\textbf{S}_{x,1}|=1$.
+	\item Then, the total worst-case time-complexity for training the decision tree is
+	$$O(t \times \sum_{x=0}^{\bar{d}}\sum_{i=1}^{2^x}n\times\left(\frac{|\textbf{S}_{x,i}|}{t}\right)^2)=O(\sum_{x=0}^{\bar{d}}n\times(\frac{|\textbf{S}|^2}{t}+t))=O(\frac{n\times \bar{d}\times|\textbf{S}|^2}{t})$$
+	\item Using the same logic as before we can also calculate the memory-complexity for training but we must account for the reduced datalength and multiple trees.
+	$$O(t\times\sum_{x=0}^{\bar{d}}\sum_{i=1}^{2^x}\frac{|\textbf{S}_{x,i}|}{t})=O(\bar{d}\times|\textbf{S}|)$$
+	\item Now, let's calculate the time complexity of inference. As we learnt from earlier, for a tree of height $d$, the worst-case time-complexity is $O(d)$. Since there are $t$ trees with average height $\bar{d}$, the worst-case time-complexity is $O(t\times \bar{d})$ The memory complexity is $O(t)$ because we need to store a single output value for every tree and take the average.
+\end{itemize}
+
 \section{Performance}
+
 Now, we shall evaluate the performance of our model. The results are summarised in the table below.
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2cm} | } 
+		\hline
+		Metrics & Score \\ 
+		\hline
+		True Negative & 67 \\
+		\hline
+		False Positive & 5 \\
+		\hline
+		False Negative & 1 \\
+		\hline
+		True Positive & 41 \\
+		\hline
+		Accuracy & 94.74\% \\
+		\hline
+		Precision & 89.13\% \\
+		\hline 
+		Recall & 97.62\% \\
+		\hline 
+		Specificity & 93.06\% \\
+		\hline 
+		F1-Score & 93.18\% \\
+		\hline
+		Balanced Accuracy & 95.34\% \\
+		\hline 
+	\end{tabular}
+\end{center}
 
 \section{GUI}
 The GUI consists of 2 sections - individual input and input of a CSV file. For inputting individual statistics and getting a diagnosis, enter the values in the textfields on the left of the screen. A screenshot can be found here \ref{fig:screenshot}. \\
@@ -131,7 +174,7 @@ The inputting of data through loading a CSV file can be done via the panel on th
 
 \heading{Jed} I was largely responsible for writing the report and coding out the GUI. From writing the report, I learnt alot about about writing good and clear pseudocode as well as writing good mathematical analysis on time-complexity and space-complexity. For the GUI, instead of using JavaFX, I made use of Jetpack Compose for Desktop. It was much easier to use and it has replaced JavaFX in many projects that I am doing. Overall, I enjoyed working on this task but I found the need for the tree to used for a social cause very restricting. The task would be easier and much more fun if we have the flexibility of using a tree for whatever purpose we want such as quad-trees / oct-trees for gravitational simulations. Also having more flexibility in what language we can use for the assignment and the module in general would be nice because data structures and algorithms can be implemented in any language, not just Java.
 
-\heading{Zayan}
+\heading{Zayan} This project was interesting and challenging. At first, I was tasked to code out the decision tree with the algorithm ID3 (Iterative Dichromatizer 3) with binning. This was challenging to code as it involved a lot of resizing. However, all my work was scrapped because we decided to pivot and used a different decision tree algorithm which Matthew coded out. It was tough seeing your work thrown out but it was a necessary part to put out the best work. I learnt that sometimes in life you have to make tough decisions and redo stuff for the best result. I then coded out the random forest classifier and the metric algorithms and also helped refactor some of the decision tree code. All in all, it was a fun experience.
 
 \heading{Mayukh}
 
