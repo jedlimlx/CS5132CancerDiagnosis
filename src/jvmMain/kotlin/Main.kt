@@ -14,6 +14,7 @@ import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 @Preview
 fun App(tree: RandomForestClassifier) {
@@ -26,6 +27,21 @@ fun App(tree: RandomForestClassifier) {
 
     val inputFilePath = remember { mutableStateOf("Path to input file") }
     val outputFilePath = remember { mutableStateOf("Path to output file") }
+
+    val errorDialog = remember { mutableStateOf(false) }
+    val errorText = remember { mutableStateOf("") }
+
+    if (errorDialog.value) {
+        AlertDialog(
+            title = { Text("Help") },
+            text = { Text(errorText.value) },
+            confirmButton = {
+                TextButton({ errorDialog.value = false }) { Text("Ok") }
+            },
+            onDismissRequest = { errorDialog.value = false },
+            modifier = Modifier.size(300.dp, 250.dp).padding(10.dp)
+        )
+    }
 
     MaterialTheme {
         Row(modifier = Modifier.padding(10.dp)) {
@@ -60,12 +76,20 @@ fun App(tree: RandomForestClassifier) {
 
                 Button(
                     onClick = {
-                        prediction.value = if (tree.predict(arrayOf(doubleArrayOf(
-                                perimeter.value.toDouble(),
-                                area.value.toDouble(),
-                                uniformity.value.toDouble(),
-                                homogenity.value.toDouble()
-                        )))[0] == 0) "Benign" else "Malignant"
+                        try {
+                            prediction.value = if (tree.predict(arrayOf(doubleArrayOf(
+                                    perimeter.value.toDouble(),
+                                    area.value.toDouble(),
+                                    uniformity.value.toDouble(),
+                                    homogenity.value.toDouble()
+                            )))[0] == 0) "Benign" else "Malignant"
+                        } catch (exception: Exception) {
+                            errorText.value = exception.toString()
+                            println(exception.stackTrace.joinToString("\n"))
+                            println()
+
+                            errorDialog.value = true
+                        }
                     }
                 ) {
                     Text("Diagnose")
@@ -82,9 +106,17 @@ fun App(tree: RandomForestClassifier) {
                 Row {
                     Button(
                         onClick = {
-                            val dialog = FileDialog(ComposeWindow(), "Open CSV", FileDialog.LOAD)
-                            dialog.isVisible = true
-                            inputFilePath.value = dialog.directory + dialog.file
+                            try {
+                                val dialog = FileDialog(ComposeWindow(), "Open CSV", FileDialog.LOAD)
+                                dialog.isVisible = true
+                                inputFilePath.value = dialog.directory + dialog.file
+                            } catch (exception: Exception) {
+                                errorText.value = exception.toString()
+                                println(exception.stackTrace.joinToString("\n"))
+                                println()
+
+                                errorDialog.value = true
+                            }
                         }
                     ) {
                         Text("Load CSV")
@@ -96,9 +128,17 @@ fun App(tree: RandomForestClassifier) {
                 Row {
                     Button(
                         onClick = {
-                            val dialog = FileDialog(ComposeWindow(), "Save CSV", FileDialog.SAVE)
-                            dialog.isVisible = true
-                            outputFilePath.value = dialog.directory + dialog.file
+                            try {
+                                val dialog = FileDialog(ComposeWindow(), "Save CSV", FileDialog.SAVE)
+                                dialog.isVisible = true
+                                outputFilePath.value = dialog.directory + dialog.file
+                            } catch (exception: Exception) {
+                                errorText.value = exception.toString()
+                                println(exception.stackTrace.joinToString("\n"))
+                                println()
+
+                                errorDialog.value = true
+                            }
                         }
                     ) {
                         Text("Save CSV")
@@ -118,7 +158,13 @@ fun App(tree: RandomForestClassifier) {
                             // Writing the predictions
                             val outputFile = File(outputFilePath.value)
                             outputFile.writeText(predictions.joinToString("\n"))
-                        } catch (exception: IOException) { }
+                        } catch (exception: Exception) {
+                            errorText.value = exception.toString()
+                            println(exception.stackTrace.joinToString("\n"))
+                            println()
+
+                            errorDialog.value = true
+                        }
                     }
                 ) {
                     Text("Diagnose")
