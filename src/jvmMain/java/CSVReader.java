@@ -22,8 +22,7 @@ public class CSVReader {
         this.stream = stream;
     }
 
-    public Pair<double[][], int[]> readCsvToXy()
-    {
+    public Pair<double[][], int[]> readCsvToXy() {
         String line;
         ArrayList<ArrayList<Double>> X_list = new ArrayList<>();
         ArrayList<String> y_list = new ArrayList<>();
@@ -46,12 +45,13 @@ public class CSVReader {
                     System.out.println("Error: Target column is not found");
                     return null;
                 }
-            } else targetIdx = -1;
+            } else
+                targetIdx = -1;
 
             for (String colName : colsToSkip) {
                 int skipIdx = Arrays.asList(headings).indexOf(colName);
                 if (skipIdx == -1) {
-                    System.out.println("Error: A column to skip ("+ colName +") is not found");
+                    System.out.println("Error: A column to skip (" + colName + ") is not found");
                     return null;
                 }
                 skipColsIdx.add(skipIdx);
@@ -62,11 +62,11 @@ public class CSVReader {
                 String[] values = line.split(",");
                 ArrayList<Double> X_rowData = new ArrayList<>();
                 for (int i = 0; i < values.length; ++i) {
-                    if (skipColsIdx.contains(i)) continue;
+                    if (skipColsIdx.contains(i))
+                        continue;
                     if (i == targetIdx) {
                         y_list.add(values[i]);
-                    }
-                    else {
+                    } else {
                         X_rowData.add(Double.parseDouble(values[i]));
                     }
                 }

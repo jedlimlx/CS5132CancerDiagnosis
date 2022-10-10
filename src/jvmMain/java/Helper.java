@@ -17,8 +17,8 @@ public class Helper {
     }
     public static double[] divideArray(int[] array, double dividend) {
         double[] newArray = new double[array.length];
-        for(int i = 0; i < array.length; ++i)
-            newArray[i] = array[i]/dividend;
+        for (int i = 0; i < array.length; ++i)
+            newArray[i] = array[i] / dividend;
 
         return newArray;
     }
@@ -28,7 +28,7 @@ public class Helper {
         for (int i : idx)
             rtn.add(y[i]);
 
-        return rtn.stream().mapToInt(i->i).toArray();
+        return rtn.stream().mapToInt(i -> i).toArray();
     }
     // same as X[idx, :]
     public static double[][] getArrayFromIndices(double[][] X, int[] idx) {
@@ -48,13 +48,14 @@ public class Helper {
         return rtn.stream().mapToDouble(d -> d).toArray();
     }
     // same as np.argmax
-    public static int getIndexOfMax(int[] a)
-    {
-        if (a == null || a.length == 0) return -1; // null or empty
+    public static int getIndexOfMax(int[] a) {
+        if (a == null || a.length == 0)
+            return -1; // null or empty
 
         int maxIndex = 0;
         for (int i = 1; i < a.length; ++i)
-            if (a[i] > a[maxIndex]) maxIndex = i;
+            if (a[i] > a[maxIndex])
+                maxIndex = i;
 
         return maxIndex;
     }
@@ -84,14 +85,14 @@ public class Helper {
         }
         int size = y.length;
         List<Integer> idx = new ArrayList<>(randomNumbersNoRepeat(size));
-        int splitIndex = (int)(size * (1-test_size));
+        int splitIndex = (int)(size * (1 - test_size));
         List<Integer> idxTrain = new ArrayList<>(idx.subList(0, splitIndex));
         List<Integer> idxTest = new ArrayList<>(idx.subList(splitIndex, size));
 
         double[][] xTrain = new double[splitIndex][];
-        double[][] xTest = new double[size-splitIndex][];
+        double[][] xTest = new double[size - splitIndex][];
         int[] yTrain = new int[splitIndex];
-        int[] yTest = new int[size-splitIndex];
+        int[] yTest = new int[size - splitIndex];
 
         for (int i = 0; i < splitIndex; ++i) {
             xTrain[i] = X[idxTrain.get(i)];
@@ -107,10 +108,11 @@ public class Helper {
     // same as sklearn's accuracy_score
     public static double accuracyScore(int[] actual, int[] pred) {
         int matchCount = 0;
-        if (pred.length != actual.length) return -1.0;
+        if (pred.length != actual.length)
+            return -1.0;
         for (int i = 0; i < pred.length; ++i)
             if (pred[i] == actual[i])
                 matchCount++;
-        return matchCount / (double) actual.length;
+        return matchCount / (double)actual.length;
     }
 }

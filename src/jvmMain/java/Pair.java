@@ -7,19 +7,11 @@ public class Pair<A, B> {
         this.b = b;
     }
 
-    public A getA() {
-        return a;
-    }
+    public A getA() { return a; }
 
-    public B getB() {
-        return b;
-    }
+    public B getB() { return b; }
 
-    public void setA(A a) {
-        this.a = a;
-    }
+    public void setA(A a) { this.a = a; }
 
-    public void setB(B b) {
-        this.b = b;
-    }
+    public void setB(B b) { this.b = b; }
 }

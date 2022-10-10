@@ -25,12 +25,8 @@ public class DecisionTree {
         this.minSamplesSplit = minSamplesSplit;
         this.root = null;
     }
-    public DecisionTree(int maxDepth) {
-        this(maxDepth, 2);
-    }
-    public DecisionTree() {
-        this(100, 2);
-    }
+    public DecisionTree(int maxDepth) { this(maxDepth, 2); }
+    public DecisionTree() { this(100, 2); }
 
     /*
     isFinished is used to evaluate the stopping criteria.
@@ -39,7 +35,8 @@ public class DecisionTree {
     the minimum required samples per split remaining.
      */
     private boolean isFinished(int depth) {
-        return depth >= this.maxDepth || this.nClassLabels == 1 || this.nSamples < this.minSamplesSplit;
+        return depth >= this.maxDepth || this.nClassLabels == 1 ||
+            this.nSamples < this.minSamplesSplit;
     }
 
     /*
@@ -63,11 +60,13 @@ public class DecisionTree {
         ArrayList<Integer> leftIdx = new ArrayList<>();
         ArrayList<Integer> rightIdx = new ArrayList<>();
         for (int i = 0; i < X.length; ++i) {
-            if (X[i] <= thresh) leftIdx.add(i);
-            else rightIdx.add(i);
+            if (X[i] <= thresh)
+                leftIdx.add(i);
+            else
+                rightIdx.add(i);
         }
-        int[] leftIdxArr = leftIdx.stream().mapToInt(i->i).toArray();
-        int[] rightIdxArr = rightIdx.stream().mapToInt(i->i).toArray();
+        int[] leftIdxArr = leftIdx.stream().mapToInt(i -> i).toArray();
+        int[] rightIdxArr = rightIdx.stream().mapToInt(i -> i).toArray();
         return new Pair<>(leftIdxArr, rightIdxArr);
     }
 
@@ -89,7 +88,7 @@ public class DecisionTree {
         }
 
         double child_loss = (nLeft / (double)n) * entropy(Helper.getArrayFromIndices(y, leftIdx)) +
-                (nRight / (double)n) * entropy(Helper.getArrayFromIndices(y, rightIdx));
+                            (nRight / (double)n) * entropy(Helper.getArrayFromIndices(y, rightIdx));
 
         return parentLoss - child_loss;
     }
@@ -125,8 +124,10 @@ public class DecisionTree {
 
     private TreeNode<Integer> buildTree(double[][] X, int[] y, int depth) {
         this.nSamples = X.length;
-        if (X.length > 0) this.nFeatures = X[0].length;
-        else this.nFeatures = 0;
+        if (X.length > 0)
+            this.nFeatures = X[0].length;
+        else
+            this.nFeatures = 0;
         this.nClassLabels = IntStream.of(y).distinct().sorted().toArray().length;
 
         // stopping criteria
@@ -140,7 +141,8 @@ public class DecisionTree {
         }
 
         // get best split
-        int[] rndFeats = Helper.randomNumbersNoRepeat(nFeatures).stream().mapToInt(i->i).toArray();
+        int[] rndFeats =
+            Helper.randomNumbersNoRepeat(nFeatures).stream().mapToInt(i -> i).toArray();
         Pair<Integer, Double> bestSplit = bestSplit(X, y, rndFeats);
         int bestFeat = bestSplit.getA();
         double bestThresh = bestSplit.getB();
@@ -149,13 +151,14 @@ public class DecisionTree {
         Pair<int[], int[]> bestSplitPair = createSplit(Helper.getColumn(X, bestFeat), bestThresh);
         int[] leftIdx = bestSplitPair.getA();
         int[] rightIdx = bestSplitPair.getB();
-        TreeNode<Integer> leftChild = buildTree(Helper.getArrayFromIndices(X, leftIdx), Helper.getArrayFromIndices(y, leftIdx), depth+1);
-        TreeNode<Integer> rightChild = buildTree(Helper.getArrayFromIndices(X, rightIdx), Helper.getArrayFromIndices(y, rightIdx), depth+1);
+        TreeNode<Integer> leftChild = buildTree(Helper.getArrayFromIndices(X, leftIdx),
+                                                Helper.getArrayFromIndices(y, leftIdx), depth + 1);
+        TreeNode<Integer> rightChild =
+            buildTree(Helper.getArrayFromIndices(X, rightIdx),
+                      Helper.getArrayFromIndices(y, rightIdx), depth + 1);
         return new TreeNode<>(bestFeat, bestThresh, leftChild, rightChild);
     }
-    private TreeNode<Integer> buildTree(double[][] X, int[] y) {
-        return buildTree(X, y, 0);
-    }
+    private TreeNode<Integer> buildTree(double[][] X, int[] y) { return buildTree(X, y, 0); }
 
     private Integer traverseTree(double[] x, TreeNode<Integer> node) {
         if (node.is_leaf()) {
@@ -167,9 +170,7 @@ public class DecisionTree {
         return traverseTree(x, node.getRight());
     }
 
-    public void fit(double[][] X, int[] y) {
-        this.root = buildTree(X, y);
-    }
+    public void fit(double[][] X, int[] y) { this.root = buildTree(X, y); }
 
     // Making a prediction by recursively traversing the tree until a leaf note is reached
     public int[] predict(double[][] X) {
