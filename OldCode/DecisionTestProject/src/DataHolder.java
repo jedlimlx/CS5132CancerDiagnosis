@@ -12,12 +12,13 @@ public class DataHolder {
 
         while (sc.hasNextLine()) {
             String[] line = sc.nextLine().split(",");
-            array.add(new BreastCancerPatient(line[1], line[2], line[3], line[4], line[5], line[6]));
+            array.add(
+                new BreastCancerPatient(line[1], line[2], line[3], line[4], line[5], line[6]));
         }
     }
 }
 
-class BreastCancerPatient{
+class BreastCancerPatient {
     int id;
     int diagnosis;
     char area_mean;
@@ -25,7 +26,8 @@ class BreastCancerPatient{
     double homogeneity;
     double uniformity;
 
-    public BreastCancerPatient(String id, String diagnosis, String area_mean, String perimeter_mean, String homogeneity, String uniformity) {
+    public BreastCancerPatient(String id, String diagnosis, String area_mean, String perimeter_mean,
+                               String homogeneity, String uniformity) {
         this.id = Integer.parseInt(id);
         this.diagnosis = Integer.parseInt(diagnosis);
         this.area_mean = area_mean.charAt(0);
