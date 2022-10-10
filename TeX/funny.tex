@@ -7,7 +7,7 @@ The gold standard for the diagnosis of breast cancer is by surgically removing t
 
 Fine needle aspiration is an alternative that allows the doctor to take out a small amount of tissue from the breast lump, without the need for surgery to remove the entire breast lump. By examining the characteristics of the cells, doctors have been able to diagnose breast cancer with variable success. Increasing the success of fine needle aspiration allows for diagnosis of breast cancer without the need for a woman to undergo surgery to remove the breast lump. \\
 
-To resolve this, this project uses a fuzzy decision tree to classify breast tumor cells into malignant cancer cells or benign non-cancerous cells. \\
+To resolve this, this project uses a decision tree to classify breast tumor cells into malignant cancer cells or benign non-cancerous cells. \\
 
 \section{Dataset}
 The dataset used was the Breast Cancer Wisconsin (Diagnostic) Data Set from the University of Irvine (UCI) Machine Learning Repository. The dataset contained 569 instances, with no missing data. 357 instances were benign (not cancerous) and 212 were malignant (cancerous). \\
@@ -23,6 +23,8 @@ The features were computed from digitalized images of fine needle aspirates of b
 	\item The number of contour concavities
 	\item The symmetry of the nuclear contour
 	\item The texture of the cell nucleus
+        \item The severity of the concave points of the contour. 
+        \item Fractal dimension of the cell.
 \end{itemize}
 
 \begin{figure}[h!]
@@ -38,26 +40,13 @@ The features were computed from digitalized images of fine needle aspirates of b
 
 The mean, standard error and worst (mean of the three largest values) of these features are computed for each image, resulting in 30 features in the UCI dataset. \\
 
-We follow in the footsteps of Sizilio et al. \ref{fna} and add newly generated features of homogeneity and uniformity that were demonstrated to have diagnostic importance. \\
+We follow in the footsteps of Sizilio et al. and add newly generated features of homogeneity and uniformity that were demonstrated to have diagnostic importance. \\
 
 Uniformity is the difference between the radius worst value and the radius mean value and is an indication of the variability in size of the cell nuclei. \\
 
 Homogeneity is the difference between the worst value of symmetry and the mean value of symmetry and is an indication of the symmetry of the cell nuclei. \\
 
 According to Sizilio et al., the features of area, perimeter, homogeneity and uniformity produced the best results. Thus, we use these 4 feature and drop all other features. \\
-
-\iffalse
-The minimum and maximum area, perimeter, homogeneity and uniformity for the 2 labels (benign and malignant) are computed and displayed in the table below. \\
-
-Fuzzy intervals are present for each of the above 4 features, whereby the benign values are within the range of the malignant values. This means that it is not linearly possible to diagnosis a breast lump as benign or malignant using a simple decision tree. Thus, we shall resort to using a fuzzy decision tree. \\
-
-\section{Fuzzy Decision Tree}
-A typical decision tree works by building a set of if statements to determine which class something belongs to. \\
-
-At each branch of the decision tree, depending on whether a given statement is true / false, either the left or right path is chosen. \\
-
-On the other hand, a fuzzy decision tree makes use of fuzzy logic, where the truth value of variables can range between 0 and 1 instead of being exactly 0 or exactly 1. \\
-\fi
 
 \section{Decision Tree}
 To solve this problem, we will make use of a decision tree. \\
@@ -163,7 +152,7 @@ The GUI consists of 2 sections - individual input and input of a CSV file. For i
 	\includegraphics[width=0.35\linewidth]{screenshot003}
 	\hspace{0.5cm}
 	\includegraphics[width=0.35\linewidth]{screenshot004}
-	\caption{(right) A screenshot of the screen for individually inputting statistics about the breast cancer cells (left) A screenshot of the screen for inference using statistics read from the CSV}
+        \caption{(left) A screenshot of the screen for individually inputting statistics about the breast cancer cells (right) A screenshot of the screen for inference using statistics read from the CSV}
 	\label{fig:screenshot}
 \end{figure}
 
