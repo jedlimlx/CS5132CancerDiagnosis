@@ -77,7 +77,7 @@ public class Helper {
         return set;
     }
     // same as sklearn's train_test_split, test_size < 1.0
-    public static TrainTest train_test_split(double[][] X, int[] y, double test_size) {
+    public static TrainTest trainTestSplit(double[][] X, int[] y, double test_size) {
         if (X.length != y.length) {
             System.out.println("X and y does not have the same size");
             return null;
@@ -85,27 +85,27 @@ public class Helper {
         int size = y.length;
         List<Integer> idx = new ArrayList<>(randomNumbersNoRepeat(size));
         int splitIndex = (int)(size * (1-test_size));
-        List<Integer> idx_train = new ArrayList<>(idx.subList(0, splitIndex));
-        List<Integer> idx_test = new ArrayList<>(idx.subList(splitIndex, size));
+        List<Integer> idxTrain = new ArrayList<>(idx.subList(0, splitIndex));
+        List<Integer> idxTest = new ArrayList<>(idx.subList(splitIndex, size));
 
-        double[][] X_train = new double[splitIndex][];
-        double[][] X_test = new double[size-splitIndex][];
-        int[] y_train = new int[splitIndex];
-        int[] y_test = new int[size-splitIndex];
+        double[][] xTrain = new double[splitIndex][];
+        double[][] xTest = new double[size-splitIndex][];
+        int[] yTrain = new int[splitIndex];
+        int[] yTest = new int[size-splitIndex];
 
         for (int i = 0; i < splitIndex; ++i) {
-            X_train[i] = X[idx_train.get(i)];
-            y_train[i] = y[idx_train.get(i)];
+            xTrain[i] = X[idxTrain.get(i)];
+            yTrain[i] = y[idxTrain.get(i)];
         }
         for (int j = 0; j < size - splitIndex; ++j) {
-            X_test[j] = X[idx_test.get(j)];
-            y_test[j] = y[idx_test.get(j)];
+            xTest[j] = X[idxTest.get(j)];
+            yTest[j] = y[idxTest.get(j)];
         }
 
-        return new TrainTest(X_train, X_test, y_train, y_test);
+        return new TrainTest(xTrain, xTest, yTrain, yTest);
     }
     // same as sklearn's accuracy_score
-    public static double accuracy_score(int[] actual, int[] pred) {
+    public static double accuracyScore(int[] actual, int[] pred) {
         int matchCount = 0;
         if (pred.length != actual.length) return -1.0;
         for (int i = 0; i < pred.length; ++i)

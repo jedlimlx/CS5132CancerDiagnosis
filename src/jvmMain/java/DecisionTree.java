@@ -1,4 +1,3 @@
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -21,13 +20,13 @@ public class DecisionTree {
     public int nSamples;
     public int nFeatures;
 
-    public DecisionTree(int max_depth, int min_samples_split) {
-        this.maxDepth = max_depth;
-        this.minSamplesSplit = min_samples_split;
+    public DecisionTree(int maxDepth, int minSamplesSplit) {
+        this.maxDepth = maxDepth;
+        this.minSamplesSplit = minSamplesSplit;
         this.root = null;
     }
-    public DecisionTree(int max_depth) {
-        this(max_depth, 2);
+    public DecisionTree(int maxDepth) {
+        this(maxDepth, 2);
     }
     public DecisionTree() {
         this(100, 2);
@@ -60,39 +59,39 @@ public class DecisionTree {
         return sum;
     }
 
-    private Pair<int[], int[]> create_split(double[] X, double thresh) {
-        ArrayList<Integer> left_idx = new ArrayList<>();
-        ArrayList<Integer> right_idx = new ArrayList<>();
+    private Pair<int[], int[]> createSplit(double[] X, double thresh) {
+        ArrayList<Integer> leftIdx = new ArrayList<>();
+        ArrayList<Integer> rightIdx = new ArrayList<>();
         for (int i = 0; i < X.length; ++i) {
-            if (X[i] <= thresh) left_idx.add(i);
-            else right_idx.add(i);
+            if (X[i] <= thresh) leftIdx.add(i);
+            else rightIdx.add(i);
         }
-        int[] left_idx_arr = left_idx.stream().mapToInt(i->i).toArray();
-        int[] right_idx_arr = right_idx.stream().mapToInt(i->i).toArray();
-        return new Pair<>(left_idx_arr, right_idx_arr);
+        int[] leftIdxArr = leftIdx.stream().mapToInt(i->i).toArray();
+        int[] rightIdxArr = rightIdx.stream().mapToInt(i->i).toArray();
+        return new Pair<>(leftIdxArr, rightIdxArr);
     }
 
     /*
     To calculate the split’s information gain, compute the sum of weighted entropy of the
     children and subtract it from the parent’s entropy.
     */
-    private double information_gain(double[] X, int[] y, double thresh) {
-        double parent_loss = entropy(y);
-        Pair<int[], int[]> splitPair = create_split(X, thresh);
-        int[] left_idx = splitPair.getA();
-        int[] right_idx = splitPair.getB();
+    private double informationGain(double[] X, int[] y, double thresh) {
+        double parentLoss = entropy(y);
+        Pair<int[], int[]> splitPair = createSplit(X, thresh);
+        int[] leftIdx = splitPair.getA();
+        int[] rightIdx = splitPair.getB();
         int n = y.length;
-        int n_left = left_idx.length;
-        int n_right = right_idx.length;
+        int nLeft = leftIdx.length;
+        int nRight = rightIdx.length;
 
-        if (n_left == 0 || n_right == 0) {
+        if (nLeft == 0 || nRight == 0) {
             return 0;
         }
 
-        double child_loss = (n_left / (double)n) * entropy(Helper.getArrayFromIndices(y, left_idx)) +
-                (n_right / (double)n) * entropy(Helper.getArrayFromIndices(y, right_idx));
+        double child_loss = (nLeft / (double)n) * entropy(Helper.getArrayFromIndices(y, leftIdx)) +
+                (nRight / (double)n) * entropy(Helper.getArrayFromIndices(y, rightIdx));
 
-        return parent_loss - child_loss;
+        return parentLoss - child_loss;
     }
 
     /*
@@ -102,7 +101,7 @@ public class DecisionTree {
     split is found, the associated parameters are stored. After looping through all combinations,
     the best feature and threshold are returned.
      */
-    private Pair<Integer, Double> best_split(double[][] X, int[] y, int[] features) {
+    private Pair<Integer, Double> bestSplit(double[][] X, int[] y, int[] features) {
         double splitScore = -1.0;
         int splitFeat = 0;
         double splitThresh = 0.0;
@@ -111,7 +110,7 @@ public class DecisionTree {
             double[] X_feat = Helper.getColumn(X, feat);
             double[] thresholds = DoubleStream.of(X_feat).distinct().sorted().toArray(); // unique
             for (double thresh : thresholds) {
-                double score = information_gain(X_feat, y, thresh);
+                double score = informationGain(X_feat, y, thresh);
 
                 if (score > splitScore) {
                     splitScore = score;
@@ -124,7 +123,7 @@ public class DecisionTree {
         return new Pair<>(splitFeat, splitThresh);
     }
 
-    private TreeNode<Integer> build_tree(double[][] X, int[] y, int depth) {
+    private TreeNode<Integer> buildTree(double[][] X, int[] y, int depth) {
         this.nSamples = X.length;
         if (X.length > 0) this.nFeatures = X[0].length;
         else this.nFeatures = 0;
@@ -136,47 +135,47 @@ public class DecisionTree {
         save that value in a leaf node.
          */
         if (isFinished(depth)) {
-            int most_common_Label = Helper.getIndexOfMax(Helper.bincount(y));
-            return new TreeNode<Integer>(most_common_Label);
+            int mostCommonLabel = Helper.getIndexOfMax(Helper.bincount(y));
+            return new TreeNode<Integer>(mostCommonLabel);
         }
 
         // get best split
-        int[] rnd_feats = Helper.randomNumbersNoRepeat(nFeatures).stream().mapToInt(i->i).toArray();
-        Pair<Integer, Double> bestSplit = best_split(X, y, rnd_feats);
-        int best_feat = bestSplit.getA();
-        double best_thresh = bestSplit.getB();
+        int[] rndFeats = Helper.randomNumbersNoRepeat(nFeatures).stream().mapToInt(i->i).toArray();
+        Pair<Integer, Double> bestSplit = bestSplit(X, y, rndFeats);
+        int bestFeat = bestSplit.getA();
+        double bestThresh = bestSplit.getB();
 
         // grow children recursively
-        Pair<int[], int[]> bestSplitPair = create_split(Helper.getColumn(X, best_feat), best_thresh);
-        int[] left_idx = bestSplitPair.getA();
-        int[] right_idx = bestSplitPair.getB();
-        TreeNode<Integer> left_child = build_tree(Helper.getArrayFromIndices(X, left_idx), Helper.getArrayFromIndices(y, left_idx), depth+1);
-        TreeNode<Integer> right_child = build_tree(Helper.getArrayFromIndices(X, right_idx), Helper.getArrayFromIndices(y, right_idx), depth+1);
-        return new TreeNode<>(best_feat, best_thresh, left_child, right_child);
+        Pair<int[], int[]> bestSplitPair = createSplit(Helper.getColumn(X, bestFeat), bestThresh);
+        int[] leftIdx = bestSplitPair.getA();
+        int[] rightIdx = bestSplitPair.getB();
+        TreeNode<Integer> leftChild = buildTree(Helper.getArrayFromIndices(X, leftIdx), Helper.getArrayFromIndices(y, leftIdx), depth+1);
+        TreeNode<Integer> rightChild = buildTree(Helper.getArrayFromIndices(X, rightIdx), Helper.getArrayFromIndices(y, rightIdx), depth+1);
+        return new TreeNode<>(bestFeat, bestThresh, leftChild, rightChild);
     }
-    private TreeNode<Integer> build_tree(double[][] X, int[] y) {
-        return build_tree(X, y, 0);
+    private TreeNode<Integer> buildTree(double[][] X, int[] y) {
+        return buildTree(X, y, 0);
     }
 
-    private Integer traverse_tree(double[] x, TreeNode<Integer> node) {
+    private Integer traverseTree(double[] x, TreeNode<Integer> node) {
         if (node.is_leaf()) {
             return node.getItem();
         }
-        if (x[node.getFeature()] <= node.getThreshhold()) {
-            return traverse_tree(x, node.getLeft());
+        if (x[node.getFeature()] <= node.getThreshold()) {
+            return traverseTree(x, node.getLeft());
         }
-        return traverse_tree(x, node.getRight());
+        return traverseTree(x, node.getRight());
     }
 
     public void fit(double[][] X, int[] y) {
-        this.root = build_tree(X, y);
+        this.root = buildTree(X, y);
     }
 
     // Making a prediction by recursively traversing the tree until a leaf note is reached
     public int[] predict(double[][] X) {
         int[] predictions = new int[X.length];
         for (int i = 0; i < X.length; ++i) {
-            predictions[i] = traverse_tree(X[i], root);
+            predictions[i] = traverseTree(X[i], root);
         }
         return predictions;
     }

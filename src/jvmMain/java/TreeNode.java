@@ -5,6 +5,7 @@ the tree is recursively traversed in order to make a prediction.
  */
 public class TreeNode<T> extends Node<T> {
     private Integer feature;
+    private Double threshold;
     public void setFeature(Integer feature)
     {
         this.feature = feature;
@@ -14,14 +15,13 @@ public class TreeNode<T> extends Node<T> {
         return this.feature;
     }
 
-    private Double threshhold;
-    public void setThreshhold(Double threshhold)
+    public void setThreshold(Double threshold)
     {
-        this.threshhold = threshhold;
+        this.threshold = threshold;
     }
-    public Double getThreshhold()
+    public Double getThreshold()
     {
-        return this.threshhold;
+        return this.threshold;
     }
 
     public void setLeft(TreeNode<T> left)
@@ -47,7 +47,7 @@ public class TreeNode<T> extends Node<T> {
         super(item, 2);
         setFeature(feature);
 
-        setThreshhold(threshhold);
+        setThreshold(threshhold);
 
         setLeft(left);
         setRight(right);

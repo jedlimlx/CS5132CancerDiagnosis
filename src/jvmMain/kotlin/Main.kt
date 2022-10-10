@@ -12,7 +12,6 @@ import androidx.compose.ui.window.application
 import java.awt.FileDialog
 import java.io.File
 import java.io.FileInputStream
-import java.io.IOException
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -181,24 +180,24 @@ fun trainTree(): RandomForestClassifier? {
     val reader = CSVReader(targetColName, colsToSkip, object {}.javaClass.getResourceAsStream("data.csv"))
     reader.readCsvToXy()
 
-    val results = Helper.train_test_split(reader.X, reader.y, 0.2)
+    val results = Helper.trainTestSplit(reader.X, reader.y, 0.2)
     if (results == null) {
         println("Train Test Split is null")
         return null
     }
 
     val clf = DecisionTree(100)
-    clf.fit(results.X_train, results.y_train)
+    clf.fit(results.xTrain, results.yTrain)
 
-    var y_pred = clf.predict(results.X_test)
-    println("Accuracy: " + Helper.accuracy_score(results.y_test, y_pred))
+    var y_pred = clf.predict(results.xTest)
+    println("Accuracy: " + Helper.accuracyScore(results.yTest, y_pred))
 
     val rClf = RandomForestClassifier()
-    rClf.fit(results.X_train, results.y_train)
+    rClf.fit(results.xTrain, results.yTrain)
     println("fit done")
 
-    y_pred = rClf.predict(results.X_test)
-    println(Metrics(results.y_test, y_pred))
+    y_pred = rClf.predict(results.xTest)
+    println(Metrics(results.yTest, y_pred))
     return rClf
 }
 
