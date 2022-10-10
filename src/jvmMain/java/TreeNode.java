@@ -46,9 +46,7 @@ public class TreeNode<T> extends Node<T> {
     {
         super(item, 2);
         setFeature(feature);
-
         setThreshold(threshhold);
-
         setLeft(left);
         setRight(right);
     }
