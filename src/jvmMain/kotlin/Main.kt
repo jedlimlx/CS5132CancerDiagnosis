@@ -190,7 +190,7 @@ fun trainTree(): RandomForestClassifier? {
     clf.fit(results.xTrain, results.yTrain)
 
     var y_pred = clf.predict(results.xTest)
-    println("Accuracy: " + Helper.accuracyScore(results.yTest, y_pred))
+    println(Metrics(results.yTest, y_pred))
 
     val rClf = RandomForestClassifier()
     rClf.fit(results.xTrain, results.yTrain)
