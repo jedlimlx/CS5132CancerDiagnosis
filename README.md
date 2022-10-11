@@ -9,11 +9,7 @@ Hence, we as part of our CS5132 project, have decided to implement a Decsion Tre
 ## Dataset 
 The dataset used is the [Breast Cancer Wisconsin (Diagnistic) Data set](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data)
 
-## GUI
-The GUI is relatively straightforward, 
-
-![](https://github.com/jedlimlx/CS5132CancerDiagnosis/raw/master/TeX/screenshot006.png)
-
+# Usage
 
 ## Build Instructions
 In order to build and run the application, running (in the comandline)
@@ -22,3 +18,11 @@ In order to build and run the application, running (in the comandline)
 
 should suffice. Gradle should automatically pull all dependencies.
 
+## GUI
+The GUI is relatively straightforward, 
+
+![](https://github.com/jedlimlx/CS5132CancerDiagnosis/raw/master/TeX/screenshot006.png)
+
+Just enter the measured values of the patient's cells in the left text input, and then press diagnose.
+
+Data can be imported, and the predictions can then be exported after pressing diagnose. 
