@@ -4,7 +4,7 @@
 Breast Cancer is the number one most common cancer amongst women in Singapore. 
 Early and accurate diagnosis of breast cancer is important for breast-saving and life saving treatment. 
 
-Hence, we as part of our CS5132 project, have decided to implement a Decsion Tree to classify breast tumor cells to see if they are malignant or benign. 
+Hence, we as part of our CS5132 project, have decided to implement a Random Forest Ensemble of Decision Trees to classify breast tumor cells to see if they are malignant or benign. 
 
 ## Dataset 
 The dataset used is the [Breast Cancer Wisconsin (Diagnistic) Data set](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data)
