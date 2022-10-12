@@ -144,6 +144,31 @@ Now, we shall evaluate the performance of our model. The results are summarised 
 	\end{tabular}
 \end{center}
 
+\heading{Testcases} We picked out 3 rows from our validation dataset to test the model on (Figure  \ref{fig:testcases}). We can see that the predictions are correct.
+\begin{figure}[h]
+	\oneCol{.9}{
+		\textbf{Input:}\\
+		2019.0000,184.6000,0.2182,7.3900\\
+		284.4000,64.4800,0.1277,0.9020\\
+		808.9000,113.5000,0.1315,1.7500\\
+		\\
+		\textbf{Output:}\\
+		Malignant\\
+		Benign\\
+		Benign\\
+		\\
+		\textbf{Correct Output:}\\
+		Malignant\\
+		Benign\\
+		Benign\\
+		
+	}
+	\vspace{-.5cm}
+	\caption{The testcases used to test the model}
+	\label{fig:testcases}
+	\vspace{-.5cm}
+\end{figure}
+
 \section{GUI Tutorial}
 The GUI consists of 2 sections - individual input and input of a CSV file. For inputting individual statistics and getting a diagnosis, enter the values in the textfields on the left of the screen. A screenshot can be found here \ref{fig:screenshot}. \\
 
